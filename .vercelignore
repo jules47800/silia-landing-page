@@ -1,0 +1,15 @@
+# Fichiers à ignorer lors du déploiement Vercel
+
+\*.md
+.git
+.gitignore
+README.md
+AMELIORATIONS_REFONTE.md
+MICRO-AMELIORATIONS_V2.md
+
+# Fichiers de développement
+
+_.log
+_.tmp
+.DS_Store
+Thumbs.db
