@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog - Silia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="bg-[#f4f4f4]">
+    <!-- Header Navigation -->
+    <header
+      class="fixed top-0 left-0 right-0 z-50 bg-indigo-600 backdrop-blur-sm shadow-sm"
+    >
+      <div class="mx-auto max-w-screen-xl px-4 sm:px-8 py-4">
+        <div class="flex items-center justify-between">
+          <a href="Silia-landing-refonte.html" class="flex items-center">
+            <img
+              class="h-12 sm:h-16 w-auto"
+              src="images/logo.png"
+              alt="Silia"
+            />
+          </a>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold">
+            <a
+              href="Silia-landing-refonte.html#fonctionnalites"
+              class="text-white hover:text-gray-200 transition-colors"
+            >
+              Fonctionnalités
+            </a>
+            <a
+              href="Silia-landing-refonte.html#avis"
+              class="text-white hover:text-gray-200 transition-colors"
+            >
+              Avis
+            </a>
+            <a
+              href="Silia-landing-refonte.html#faq"
+              class="text-white hover:text-gray-200 transition-colors"
+            >
+              FAQ
+            </a>
+            <a
+              href="Silia-landing-refonte.html#parrainage"
+              class="text-white hover:text-gray-200 transition-colors"
+            >
+              Parrainage
+            </a>
+            <a
+              href="blog.html"
+              class="text-white hover:text-gray-200 transition-colors border-b-2 border-white"
+            >
+              Blog
+            </a>
+            <a
+              href="contact.html"
+              class="text-white hover:text-gray-200 transition-colors"
+            >
+              Contact
+            </a>
+          </nav>
+
+          <!-- CTA Buttons Desktop -->
+          <div class="hidden lg:flex items-center gap-4">
+            <a
+              href="Silia-landing-refonte.html"
+              class="px-4 py-2 text-white border-2 border-white rounded-sm hover:bg-white hover:text-indigo-600 transition-colors"
+            >
+              Retour à l'accueil
+            </a>
+            <a
+              href="dashboard-maquette.html"
+              class="cta-button px-6 py-3 bg-white text-indigo-600 rounded-sm font-semibold hover:bg-gray-100 transition-all shadow-md hover:shadow-lg"
+            >
+              Accéder au dashboard
+            </a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            onclick="toggleMobileMenu()"
+            class="lg:hidden p-2 text-white"
+            aria-label="Toggle menu"
+          >
+            <svg
+              id="menuIcon"
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+            <svg
+              id="closeIcon"
+              class="w-6 h-6 hidden"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="hidden lg:hidden bg-indigo-700 border-t border-indigo-500"
+      >
+        <div class="px-4 py-4 space-y-3">
+          <a
+            href="Silia-landing-refonte.html#fonctionnalites"
+            class="block text-white hover:text-gray-200 py-2"
+          >
+            Fonctionnalités
+          </a>
+          <a
+            href="Silia-landing-refonte.html#avis"
+            class="block text-white hover:text-gray-200 py-2"
+          >
+            Avis
+          </a>
+          <a
+            href="Silia-landing-refonte.html#faq"
+            class="block text-white hover:text-gray-200 py-2"
+          >
+            FAQ
+          </a>
+          <a
+            href="Silia-landing-refonte.html#parrainage"
+            class="block text-white hover:text-gray-200 py-2"
+          >
+            Parrainage
+          </a>
+          <a
+            href="blog.html"
+            class="block text-white hover:text-gray-200 py-2 font-bold"
+          >
+            Blog
+          </a>
+          <a
+            href="contact.html"
+            class="block text-white hover:text-gray-200 py-2"
+          >
+            Contact
+          </a>
+          <div class="pt-3 border-t border-indigo-500 space-y-2">
+            <a
+              href="Silia-landing-refonte.html"
+              class="block w-full text-center px-4 py-2 border-2 border-white text-white rounded-sm hover:bg-white hover:text-indigo-600"
+            >
+              Retour à l'accueil
+            </a>
+            <a
+              href="dashboard-maquette.html"
+              class="block w-full text-center px-4 py-3 bg-white text-indigo-600 rounded-sm font-semibold"
+            >
+              Accéder au dashboard
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      class="relative pt-32 pb-16 bg-gradient-to-br from-indigo-600 via-indigo-700 to-purple-800"
+    >
+      <div class="container mx-auto px-4 sm:px-8 max-w-screen-xl">
+        <div class="text-center max-w-3xl mx-auto">
+          <div
+            class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white mb-6"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+              ></path>
+            </svg>
+            <span class="text-sm font-medium">Actualités & Conseils</span>
+          </div>
+
+          <h1
+            class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 flex items-center justify-center gap-4"
+          >
+            Le Blog
+            <img
+              src="images/logo.png"
+              alt="Silia"
+              class="h-20 sm:h-28 lg:h-32 w-auto"
+            />
+          </h1>
+
+          <p class="text-xl text-indigo-100">
+            Découvrez nos articles, conseils et actualités pour optimiser votre
+            communication d'entreprise
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Articles Grid -->
+    <section class="py-20 bg-[#f4f4f4]">
+      <div class="container mx-auto px-4 sm:px-8 max-w-screen-xl">
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Article 1 - Restaurant -->
+          <article
+            class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 group"
+          >
+            <div
+              class="relative h-64 bg-gradient-to-br from-indigo-500 to-purple-600 overflow-hidden"
+            >
+              <div class="absolute inset-0 flex items-center justify-center">
+                <svg
+                  class="w-32 h-32 text-white/20 group-hover:scale-110 transition-transform duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+              </div>
+              <div class="absolute top-4 right-4">
+                <span
+                  class="px-3 py-1 bg-white/90 backdrop-blur-sm text-indigo-600 text-xs font-bold rounded-full"
+                >
+                  🍽️ Restaurant
+                </span>
+              </div>
+            </div>
+            <div class="p-8">
+              <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  ></path>
+                </svg>
+                <time datetime="2024-02-07">07 Février 2024</time>
+              </div>
+
+              <h2
+                class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-indigo-600 transition-colors"
+              >
+                Révolutionnez le service clientèle de votre restaurant avec
+                l'application Silia !
+              </h2>
+
+              <p class="text-gray-600 mb-6 line-clamp-3">
+                Dans le monde numérique d'aujourd'hui, une communication
+                efficace est la clé du succès pour les restaurants. Que ce soit
+                pour gérer les réservations, prendre des commandes à emporter,
+                ou simplement rester en contact avec vos clients, une
+                application de communication qui vous est propre peut faire
+                toute la différence.
+              </p>
+
+              <a
+                href="article-restaurant.html"
+                class="inline-flex items-center gap-2 text-indigo-600 hover:text-indigo-700 font-semibold group"
+              >
+                Lire l'article complet
+                <svg
+                  class="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Article 2 - CSE -->
+          <article
+            class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 group"
+          >
+            <div
+              class="relative h-64 bg-gradient-to-br from-green-500 to-teal-600 overflow-hidden"
+            >
+              <div class="absolute inset-0 flex items-center justify-center">
+                <svg
+                  class="w-32 h-32 text-white/20 group-hover:scale-110 transition-transform duration-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                  ></path>
+                </svg>
+              </div>
+              <div class="absolute top-4 right-4">
+                <span
+                  class="px-3 py-1 bg-white/90 backdrop-blur-sm text-green-600 text-xs font-bold rounded-full"
+                >
+                  🏢 CSE
+                </span>
+              </div>
+            </div>
+            <div class="p-8">
+              <div class="flex items-center gap-2 text-sm text-gray-500 mb-4">
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  ></path>
+                </svg>
+                <time datetime="2024-02-07">07 Février 2024</time>
+              </div>
+
+              <h2
+                class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-green-600 transition-colors"
+              >
+                Optimisez la Communication de votre CSE avec l'application Silia
+                !
+              </h2>
+
+              <p class="text-gray-600 mb-6 line-clamp-3">
+                Les Comités Sociaux et Économiques (CSE) jouent un rôle
+                essentiel dans la vie des entreprises, veillant au bien-être et
+                aux intérêts des employés. Cependant, la gestion efficace des
+                communications au sein de ces comités peut parfois être un défi.
+              </p>
+
+              <a
+                href="article-cse.html"
+                class="inline-flex items-center gap-2 text-green-600 hover:text-green-700 font-semibold group"
+              >
+                Lire l'article complet
+                <svg
+                  class="w-5 h-5 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="mt-16 text-center">
+          <div
+            class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-12 text-white"
+          >
+            <h3 class="text-3xl font-bold mb-4">Prêt à découvrir Silia ?</h3>
+            <p class="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
+              Rejoignez les entreprises qui ont déjà transformé leur
+              communication avec notre solution
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="https://calendly.com/siliasas/demo"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-8 py-4 bg-white text-indigo-600 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg"
+              >
+                Réserver une démo
+              </a>
+              <a
+                href="contact.html"
+                class="px-8 py-4 border-2 border-white text-white rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition-colors"
+              >
+                Nous contacter
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="container mx-auto px-4 sm:px-8 max-w-screen-xl">
+        <div class="text-center">
+          <img
+            class="h-12 w-auto mx-auto mb-6"
+            src="images/logo.png"
+            alt="Silia"
+          />
+          <p class="text-gray-400 mb-8">
+            La plateforme de communication mobile pour votre entreprise
+          </p>
+          <div class="flex justify-center gap-6 mb-8">
+            <a
+              href="Silia-landing-refonte.html"
+              class="text-gray-400 hover:text-white transition-colors"
+              >Accueil</a
+            >
+            <a
+              href="Silia-landing-refonte.html#fonctionnalites"
+              class="text-gray-400 hover:text-white transition-colors"
+              >Fonctionnalités</a
+            >
+            <a
+              href="Silia-landing-refonte.html#faq"
+              class="text-gray-400 hover:text-white transition-colors"
+              >FAQ</a
+            >
+            <a
+              href="blog.html"
+              class="text-gray-400 hover:text-white transition-colors"
+              >Blog</a
+            >
+            <a
+              href="contact.html"
+              class="text-gray-400 hover:text-white transition-colors"
+              >Contact</a
+            >
+          </div>
+          <p class="text-gray-500 text-sm">
+            © 2025 Silia. Tous droits réservés.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobileMenu");
+        const menuIcon = document.getElementById("menuIcon");
+        const closeIcon = document.getElementById("closeIcon");
+
+        menu.classList.toggle("hidden");
+        menuIcon.classList.toggle("hidden");
+        closeIcon.classList.toggle("hidden");
+      }
+
+      // Initialize Lucide icons
+      lucide.createIcons();
+    </script>
+  </body>
+</html>

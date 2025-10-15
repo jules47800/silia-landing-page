@@ -1,0 +1,1847 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Silia - Centralisez votre communication interne sans compétences techniques</title>
+    <meta name="description" content="La solution tout-en-un pour les petites structures qui veulent moderniser leur communication interne. Simple, intuitive et sans compétences techniques requises." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="bg-[#f4f4f4]">
+    <!-- Accessibility Font Size Controls -->
+    <div
+      id="accessibilityControls"
+      class="fixed right-4 top-24 z-40 bg-white rounded-lg shadow-lg p-3 border-2 border-gray-200"
+      onclick="toggleAccessibilityMenu()"
+      title="Taille du texte"
+    >
+      <div class="flex flex-col gap-2" onclick="event.stopPropagation()">
+        <button onclick="changeFontSize('small')" title="Texte petit">A</button>
+        <button
+          onclick="changeFontSize('normal')"
+          class="active"
+          title="Texte normal"
+        >
+          A
+        </button>
+        <button onclick="changeFontSize('large')" title="Texte grand">A</button>
+        <button onclick="changeFontSize('xlarge')" title="Texte très grand">
+          A
+        </button>
+      </div>
+    </div>
+
+    <!-- Tour Guide Overlay -->
+    <div id="tourOverlay" class="tour-overlay">
+      <div class="tour-content">
+        <div class="absolute top-3 right-3">
+          <button
+            onclick="closeTour()"
+            class="text-gray-500 hover:text-gray-700"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <div id="tourStepContent">
+          <!-- Dynamic content will be inserted here -->
+        </div>
+        <div class="flex justify-between mt-6">
+          <button
+            onclick="previousTourStep()"
+            id="prevBtn"
+            class="px-4 py-2 text-gray-600 hover:text-gray-800"
+          >
+            ← Précédent
+          </button>
+          <div class="flex gap-2" id="tourDots">
+            <!-- Dots will be inserted here -->
+          </div>
+          <button
+            onclick="nextTourStep()"
+            id="nextBtn"
+            class="px-6 py-2 bg-indigo-600 text-white rounded-sm hover:bg-indigo-700"
+          >
+            Suivant →
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spotlight for tour -->
+    <div id="tourSpotlight" class="tour-spotlight" style="display: none"></div>
+
+    <!-- Header Navigation -->
+    <header
+      class="fixed top-0 left-0 right-0 z-50 bg-indigo-600 backdrop-blur-sm shadow-sm"
+    >
+      <div class="mx-auto max-w-screen-xl px-4 sm:px-8 py-4">
+        <div class="flex items-center justify-between">
+          <a href="/" class="flex items-center">
+            <img
+              class="h-12 sm:h-16 w-auto"
+              src="images/logo.png"
+              alt="Silia"
+            />
+          </a>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold">
+            <a
+              href="#fonctionnalites"
+              class="text-white hover:text-gray-200 transition-colors"
+              >Fonctionnalités</a
+            >
+            <a
+              href="#avis"
+              class="text-white hover:text-gray-200 transition-colors"
+              >Avis</a
+            >
+            <a
+              href="#faq"
+              class="text-white hover:text-gray-200 transition-colors"
+              >FAQ</a
+            >
+            <a
+              href="#parrainage"
+              class="text-white hover:text-gray-200 transition-colors"
+              >Parrainage</a
+            >
+            <a
+              href="blog.html"
+              class="text-white hover:text-gray-200 transition-colors"
+              >Blog</a
+            >
+            <a
+              href="contact.html"
+              class="text-white hover:text-gray-200 transition-colors"
+              >Contact</a
+            >
+          </nav>
+
+          <!-- CTA Buttons Desktop -->
+          <div class="hidden lg:flex items-center gap-3">
+            <a
+              href="dashboard-maquette.html"
+              class="flex items-center gap-2 px-4 py-2 text-white hover:text-gray-200 transition-colors font-medium"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
+                ></path>
+              </svg>
+              Connexion
+            </a>
+            <a
+              href="https://calendly.com/siliasas/demo"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="cta-button px-6 py-2.5 bg-white text-indigo-600 rounded-sm font-semibold hover:bg-gray-100 transition-all shadow-md hover:shadow-lg"
+            >
+              Créer mon compte
+            </a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <button
+            onclick="toggleMobileMenu()"
+            class="lg:hidden p-2 text-white"
+            aria-label="Toggle menu"
+          >
+            <svg
+              id="menuIcon"
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+            <svg
+              id="closeIcon"
+              class="w-6 h-6 hidden"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="hidden lg:hidden bg-indigo-700 border-t border-indigo-500"
+      >
+        <nav class="mx-auto max-w-screen-xl px-4 py-4 flex flex-col gap-3">
+          <a
+            href="#fonctionnalites"
+            onclick="toggleMobileMenu()"
+            class="text-white hover:text-gray-200 transition-colors py-2 border-b border-indigo-500"
+            >Fonctionnalités</a
+          >
+          <a
+            href="#avis"
+            onclick="toggleMobileMenu()"
+            class="text-white hover:text-gray-200 transition-colors py-2 border-b border-indigo-500"
+            >Avis</a
+          >
+          <a
+            href="#faq"
+            onclick="toggleMobileMenu()"
+            class="text-white hover:text-gray-200 transition-colors py-2 border-b border-indigo-500"
+            >FAQ</a
+          >
+          <a
+            href="#parrainage"
+            onclick="toggleMobileMenu()"
+            class="text-white hover:text-gray-200 transition-colors py-2 border-b border-indigo-500"
+            >Parrainage</a
+          >
+          <a
+            href="blog.html"
+            onclick="toggleMobileMenu()"
+            class="text-white hover:text-gray-200 transition-colors py-2 border-b border-indigo-500"
+            >Blog</a
+          >
+          <a
+            href="contact.html"
+            onclick="toggleMobileMenu()"
+            class="text-white hover:text-gray-200 transition-colors py-2 border-b border-indigo-500"
+            >Contact</a
+          >
+          <a
+            href="dashboard-maquette.html"
+            onclick="toggleMobileMenu()"
+            class="mt-4 w-full py-3 text-white border-2 border-white rounded-sm hover:bg-white hover:text-indigo-600 transition-colors font-semibold text-center flex items-center justify-center gap-2"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
+            </svg>
+            Connexion
+          </a>
+          <a
+            href="https://calendly.com/siliasas/demo"
+            target="_blank"
+            rel="noopener noreferrer"
+            onclick="toggleMobileMenu()"
+            class="w-full py-3 bg-white text-indigo-600 rounded-sm font-semibold hover:bg-gray-100 transition-all text-center"
+          >
+            Créer mon compte
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      id="hero"
+      class="section-block section-hero relative pt-32 pb-20 overflow-hidden"
+    >
+      <!-- Background Pattern -->
+      <div class="absolute inset-0 -z-10">
+        <div
+          class="absolute top-0 h-[40rem] w-full [mask-image:linear-gradient(white,transparent)]"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-[#402bff] to-[#3e4bff] opacity-70"
+          >
+            <svg
+              aria-hidden="true"
+              class="absolute inset-x-0 inset-y-[-10%] h-[200%] w-full skew-y-[-18deg] stroke-black/50 mix-blend-overlay"
+            >
+              <defs>
+                <pattern
+                  id="pattern"
+                  width="72"
+                  height="56"
+                  patternUnits="userSpaceOnUse"
+                  x="-12"
+                  y="4"
+                >
+                  <path d="M.5 56V.5H72" fill="none"></path>
+                </pattern>
+              </defs>
+              <rect
+                width="100%"
+                height="100%"
+                stroke-width="0"
+                fill="url(#pattern)"
+              ></rect>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="mx-auto max-w-screen-xl px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <!-- Left Content -->
+          <div class="space-y-8 animate-slide-in">
+            <h1 class="font-headings">
+              Centralisez toute votre<br />
+              <span class="text-indigo-600">communication interne</span>,<br />
+              sans compétences techniques.
+            </h1>
+            <p class="text-xl text-gray-700 max-w-xl leading-relaxed">
+              La solution tout-en-un pour les petites structures qui veulent
+              moderniser leur communication, sans complexité.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-wrap gap-4">
+              <a
+                href="https://calendly.com/siliasas/demo"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="cta-button inline-flex items-center px-8 py-4 bg-[#6c63ff] text-white text-lg font-semibold rounded-sm hover:bg-[#5a52e0] transition-all shadow-lg hover:shadow-xl"
+              >
+                Tester Silia gratuitement
+                <svg
+                  class="ml-2 w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  ></path>
+                </svg>
+              </a>
+              <button
+                onclick="startTour()"
+                class="inline-flex items-center px-8 py-4 bg-white text-[#6c63ff] text-lg font-semibold rounded-sm border-2 border-[#6c63ff] hover:bg-indigo-50 transition-all shadow-md hover:shadow-lg group"
+              >
+                <svg
+                  class="mr-2 w-5 h-5 group-hover:rotate-12 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+                Visite guidée (2 min)
+              </button>
+              <a
+                href="dashboard-maquette.html"
+                class="inline-flex items-center px-8 py-4 bg-[#fbbf24] text-gray-900 text-lg font-semibold rounded-sm border-2 border-[#fbbf24] hover:bg-[#f59e0b] transition-all"
+              >
+                <svg
+                  class="mr-2 w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                  ></path>
+                </svg>
+                Voir le back-office
+              </a>
+            </div>
+
+            <!-- Social Proof -->
+            <p class="flex items-center gap-2 text-gray-600 mt-6">
+              <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="font-semibold">+5000 utilisateurs nous font déjà confiance</span>
+            </p>
+          </div>
+
+          <!-- Right Preview with Floating Cards -->
+          <div class="relative hidden h-[620px] lg:block">
+            <img
+              class="absolute floating-4 top-2 w-[800px] xl:w-[800px] max-w-none drop-shadow-[0_24px_60px_rgba(17,24,39,0.4)] phone"
+              src="images/preview_app_black.png"
+              alt="Silia App Preview"
+            />
+
+            <div
+              class="absolute top-16 right-0 flex w-72 flex-col rounded-sm border-2 border-black bg-gray-100 px-4 py-3 text-black shadow-[0_3px_0_black] floating-1"
+            >
+              <span class="absolute flex h-3 w-3 right-2 top-2">
+                <span
+                  class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"
+                ></span>
+                <span
+                  class="relative inline-flex rounded-full h-3 w-3 bg-red-500"
+                ></span>
+              </span>
+              <span class="font-semibold">Notifications</span>
+              <span class="text-sm">Alertez votre audience en illimité</span>
+            </div>
+
+            <div
+              class="absolute bottom-32 left-0 flex w-72 flex-col rounded-sm border-2 border-black bg-gray-100 px-4 py-3 text-black shadow-[0_3px_0_black] floating-2"
+            >
+              <span class="font-semibold">Personnalisation</span>
+              <span class="text-sm">Modulez votre espace à votre image</span>
+            </div>
+
+            <div
+              class="absolute bottom-0 right-12 flex w-72 flex-col rounded-sm border-2 border-black bg-gray-100 px-4 py-3 text-black shadow-[0_3px_0_black] floating-3"
+            >
+              <span class="font-semibold">Publication</span>
+              <span class="text-sm">Partagez du contenu en illimité</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem / Solution Section -->
+    <section class="section-block py-16 bg-gradient-to-b from-white to-[#fdf8f3]">
+      <div class="mx-auto max-w-screen-xl px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="bg-white rounded-2xl p-10 border-2 border-red-200 shadow-lg hover:shadow-xl transition-shadow">
+            <div class="text-center mb-6">
+              <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-red-100 to-red-200 flex items-center justify-center mb-4 shadow-md">
+                <svg class="w-10 h-10 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900">Le problème</h3>
+            </div>
+            <p class="text-lg text-gray-700 leading-relaxed text-center">
+              Les petites structures manquent d'outils de communication simples et centralisés. 
+              Emails perdus, informations dispersées, difficultés à toucher tous les membres... 
+              La communication devient vite un casse-tête.
+            </p>
+          </div>
+          
+          <div class="bg-white rounded-2xl p-10 border-2 border-green-200 shadow-lg hover:shadow-xl transition-shadow">
+            <div class="text-center mb-6">
+              <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-green-100 to-emerald-200 flex items-center justify-center mb-4 shadow-md">
+                <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900">La solution Silia</h3>
+            </div>
+            <p class="text-lg text-gray-700 leading-relaxed text-center">
+              Une plateforme unique pour centraliser tous vos échanges : actualités, événements, 
+              documents, sondages... Tout au même endroit, accessible à tous vos membres, 
+              sans compétences techniques requises.
+            </p>
+          </div>
+        </div>
+
+        <!-- CTA Secondaire -->
+        <div class="text-center mt-12">
+          <a
+            href="https://calendly.com/siliasas/demo"
+            target="_blank"
+            class="inline-flex items-center px-8 py-4 bg-[#6c63ff] text-white text-lg font-semibold rounded-sm hover:bg-[#5a52e0] transition-all shadow-lg hover:shadow-xl"
+          >
+            Découvrir comment Silia répond à vos besoins
+            <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </a>
+          <p class="mt-3 text-sm text-gray-600">Aucune carte bancaire requise • Configuration en 5 minutes</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section with Key Numbers -->
+    <section id="stats" class="section-block section-light py-16 bg-white">
+      <div class="mx-auto max-w-screen-xl px-8">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="text-center p-6 rounded-xl bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-100 hover:scale-105 transition-transform cursor-default">
+            <div class="stat-number text-5xl font-bold text-indigo-600 mb-2">
+              80+
+            </div>
+            <div class="text-gray-700 font-semibold text-sm">Clients actifs</div>
+          </div>
+          <div class="text-center p-6 rounded-xl bg-gradient-to-br from-purple-50 to-pink-50 border-2 border-purple-100 hover:scale-105 transition-transform cursor-default">
+            <div
+              class="stat-number text-5xl font-bold text-purple-600 mb-2"
+              style="animation-delay: 0.1s"
+            >
+              5000+
+            </div>
+            <div class="text-gray-700 font-semibold text-sm">Utilisateurs</div>
+          </div>
+          <div class="text-center p-6 rounded-xl bg-gradient-to-br from-pink-50 to-rose-50 border-2 border-pink-100 hover:scale-105 transition-transform cursor-default">
+            <div
+              class="stat-number text-5xl font-bold text-pink-600 mb-2"
+              style="animation-delay: 0.2s"
+            >
+              50k
+            </div>
+            <div class="text-gray-700 font-semibold text-sm">Sessions / mois</div>
+          </div>
+          <div class="text-center p-6 rounded-xl bg-gradient-to-br from-rose-50 to-orange-50 border-2 border-rose-100 hover:scale-105 transition-transform cursor-default">
+            <div
+              class="stat-number text-5xl font-bold text-rose-600 mb-2"
+              style="animation-delay: 0.3s"
+            >
+              4.8/5
+            </div>
+            <div class="text-gray-700 font-semibold text-sm">Satisfaction</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clients Logo Carousel -->
+    <section
+      id="clients"
+      class="section-block section-soft py-16 bg-gradient-to-b from-white to-gray-50"
+    >
+      <div class="mx-auto max-w-screen-xl px-8">
+        <h2 class="text-center text-3xl font-bold text-gray-800 mb-12">
+          Ils nous font confiance
+        </h2>
+        <div class="logo-scroll">
+          <div class="logo-scroll-inner">
+            <!-- First set of logos -->
+            <div class="inline-flex items-center gap-12 px-6">
+              <div
+                class="w-40 h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-4"
+                title="Union Pour l'Entreprise des Hautes-Alpes | Déploiement application mobile SILIA | 2024"
+              >
+                <img
+                  src="images/clients/UPE05.png"
+                  alt="UPE 05"
+                  class="max-w-full max-h-full object-contain"
+                />
+              </div>
+              <div
+                class="w-40 h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-4"
+                title="CFA Interpro 28 | Déploiement application mobile SILIA | 2022"
+              >
+                <img
+                  src="images/clients/CFAInterpro28.png"
+                  alt="CFA Interpro 28"
+                  class="max-w-full max-h-full object-contain"
+                />
+              </div>
+              <div
+                class="w-40 h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-4"
+                title="Centre Social La Passerelle Quetigny | Déploiement application mobile SILIA | 2023"
+              >
+                <img
+                  src="images/clients/logo-passerelle.png"
+                  alt="Centre Social La Passerelle"
+                  class="max-w-full max-h-full object-contain"
+                />
+              </div>
+              <div
+                class="w-40 h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-4"
+                title="Mission Locale du Pays d'Aix | Déploiement application mobile SILIA | 2023"
+              >
+                <img
+                  src="images/clients/Mission-Locale-Pays-Aix.jpg"
+                  alt="Mission Locale du Pays d'Aix"
+                  class="max-w-full max-h-full object-contain"
+                />
+              </div>
+              <div
+                class="w-40 h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-4"
+                title="Tech XV | Déploiement application mobile SILIA | 2022"
+              >
+                <img
+                  src="images/clients/logo-techxvv.svg"
+                  alt="Tech XV"
+                  class="max-w-full max-h-full object-contain"
+                />
+              </div>
+            </div>
+            <!-- Duplicate set for seamless loop -->
+            <div class="inline-flex items-center gap-12 px-6">
+              <div
+                class="w-40 h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-4"
+                title="Union Pour l'Entreprise des Hautes-Alpes | Déploiement application mobile SILIA | 2024"
+              >
+                <img
+                  src="images/clients/UPE05.png"
+                  alt="UPE 05"
+                  class="max-w-full max-h-full object-contain"
+                />
+              </div>
+              <div
+                class="w-40 h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-4"
+                title="CFA Interpro 28 | Déploiement application mobile SILIA | 2022"
+              >
+                <img
+                  src="images/clients/CFAInterpro28.png"
+                  alt="CFA Interpro 28"
+                  class="max-w-full max-h-full object-contain"
+                />
+              </div>
+              <div
+                class="w-40 h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-4"
+                title="Centre Social La Passerelle Quetigny | Déploiement application mobile SILIA | 2023"
+              >
+                <img
+                  src="images/clients/logo-passerelle.png"
+                  alt="Centre Social La Passerelle"
+                  class="max-w-full max-h-full object-contain"
+                />
+              </div>
+              <div
+                class="w-40 h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-4"
+                title="Mission Locale du Pays d'Aix | Déploiement application mobile SILIA | 2023"
+              >
+                <img
+                  src="images/clients/Mission-Locale-Pays-Aix.jpg"
+                  alt="Mission Locale du Pays d'Aix"
+                  class="max-w-full max-h-full object-contain"
+                />
+              </div>
+              <div
+                class="w-40 h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-4"
+                title="Tech XV | Déploiement application mobile SILIA | 2022"
+              >
+                <img
+                  src="images/clients/logo-techxvv.svg"
+                  alt="Tech XV"
+                  class="max-w-full max-h-full object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section
+      id="fonctionnalites"
+      class="section-block section-light py-20 bg-white"
+    >
+      <div class="mx-auto max-w-screen-xl px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+            Tout ce dont vous avez besoin, au même endroit
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Silia réunit en une seule application tous les outils dont votre structure a besoin pour communiquer efficacement.
+          </p>
+        </div>
+
+        <!-- Feature Cards -->
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+          <div
+            class="rounded-lg border-2 border-gray-200 overflow-hidden group hover:border-indigo-600 hover:shadow-xl transition-all bg-white"
+          >
+            <div class="relative h-80 overflow-hidden">
+              <img
+                alt="Personnalisation"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                src="images/portrait-1.jpg"
+              />
+            </div>
+            <div class="relative p-8">
+              <div class="flex items-center gap-4 mb-4">
+                <div
+                  class="w-14 h-14 rounded-xl bg-indigo-100 flex items-center justify-center text-indigo-600"
+                >
+                  <i data-lucide="palette" class="w-7 h-7"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900">
+                  Personnalisez votre espace
+                </h3>
+              </div>
+              <p class="text-lg text-gray-700 mb-4">
+                Adaptez et modulez votre application à votre image en toute
+                liberté.
+              </p>
+              <a href="dashboard-maquette.html" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-700">
+                Voir le back-office
+                <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="rounded-lg border-2 border-gray-200 overflow-hidden group hover:border-purple-600 hover:shadow-xl transition-all bg-white"
+          >
+            <div class="relative h-80 overflow-hidden">
+              <img
+                alt="Publication"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                src="images/portrait-2.jpg"
+              />
+            </div>
+            <div class="relative p-8">
+              <div class="flex items-center gap-4 mb-4">
+                <div
+                  class="w-14 h-14 rounded-xl bg-purple-100 flex items-center justify-center text-purple-600"
+                >
+                  <i data-lucide="file-text" class="w-7 h-7"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900">
+                  Publiez facilement
+                </h3>
+              </div>
+              <p class="text-lg text-gray-700 mb-4">
+                Partagez l'information en quelques clics. Créez du contenu en illimité, sans restriction.
+              </p>
+              <a href="dashboard-maquette.html" class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-700">
+                Exemple de publication
+                <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mini Feature Cards -->
+        <div class="grid md:grid-cols-3 gap-6">
+          <div
+            class="rounded-lg border-2 border-gray-200 p-8 bg-white hover:border-blue-500 hover:shadow-lg transition-all group"
+          >
+            <div
+              class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 mb-4 group-hover:scale-110 transition-transform"
+            >
+              <i data-lucide="bell" class="w-6 h-6"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-3 text-gray-900">
+              Échangez en direct
+            </h4>
+            <p class="text-gray-700">
+              Alertez votre audience en temps réel lorsque vous publiez un
+              nouveau contenu. Communication instantanée garantie.
+            </p>
+          </div>
+
+          <div
+            class="rounded-lg border-2 border-gray-200 p-8 bg-white hover:border-green-500 hover:shadow-lg transition-all group"
+          >
+            <div
+              class="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center text-green-600 mb-4 group-hover:scale-110 transition-transform"
+            >
+              <i data-lucide="calendar" class="w-6 h-6"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-3 text-gray-900">
+              Gérez vos événements
+            </h4>
+            <p class="text-gray-700">
+              Créez et partagez vos événements. Suivez les inscriptions et communiquez avec les participants en un clin d'œil.
+            </p>
+          </div>
+
+          <div
+            class="rounded-lg border-2 border-gray-200 p-8 bg-white hover:border-orange-500 hover:shadow-lg transition-all group"
+          >
+            <div
+              class="w-12 h-12 rounded-lg bg-orange-100 flex items-center justify-center text-orange-600 mb-4 group-hover:scale-110 transition-transform"
+            >
+              <i data-lucide="users" class="w-6 h-6"></i>
+            </div>
+            <h4 class="text-xl font-bold mb-3 text-gray-900">
+              Restez connectés
+            </h4>
+            <p class="text-gray-700">
+              Échangez avec vos utilisateurs et administrateurs. Support disponible pour vous accompagner à tout moment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it Works -->
+    <section
+      class="section-block section-dark py-20 bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900 text-white relative overflow-hidden"
+    >
+      <!-- Subtle gradient overlay -->
+      <div class="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent pointer-events-none"></div>
+      
+      <div class="relative mx-auto max-w-screen-xl px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-4xl font-bold mb-6">
+              Communiquez de manière intuitive
+            </h2>
+            <p class="text-lg opacity-80 mb-12">
+              Vos utilisateurs peuvent se connecter ainsi que recevoir vos
+              dernières nouveautés et nouveaux documents en seulement 4 étapes.
+            </p>
+
+            <div class="space-y-6">
+              <div class="flex items-start gap-4">
+                <div
+                  class="flex-shrink-0 w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center"
+                >
+                  <i data-lucide="download" class="w-6 h-6 text-white"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold mb-2">
+                    Installez l'application Silia
+                  </h3>
+                  <p class="opacity-80">
+                    Téléchargez notre application sur l'App Store et le Play
+                    Store.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div
+                  class="flex-shrink-0 w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center"
+                >
+                  <i data-lucide="log-in" class="w-6 h-6 text-white"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold mb-2">
+                    Connectez-vous à votre espace
+                  </h3>
+                  <p class="opacity-80">
+                    Utilisez vos identifiants pour accéder à votre espace
+                    personnalisé.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div
+                  class="flex-shrink-0 w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center"
+                >
+                  <i data-lucide="folder-open" class="w-6 h-6 text-white"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold mb-2">Accédez au contenu</h3>
+                  <p class="opacity-80">
+                    Consultez toutes les informations et documents disponibles.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4">
+                <div
+                  class="flex-shrink-0 w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center"
+                >
+                  <i data-lucide="bell-ring" class="w-6 h-6 text-white"></i>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold mb-2">
+                    Recevez une notification
+                  </h3>
+                  <p class="opacity-80">
+                    Soyez alerté instantanément des nouveautés.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hidden lg:block">
+            <img
+              alt="Silia"
+              class="rounded-lg shadow-2xl"
+              src="images/portrait-3.jpg"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials / Avis Section -->
+    <section
+      id="avis"
+      class="section-block section-soft py-20 bg-gradient-to-b from-gray-50 to-white"
+    >
+      <div class="mx-auto max-w-screen-xl px-8">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 px-6 py-3 bg-yellow-100 rounded-full mb-6">
+            <div class="flex items-center gap-1">
+              <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+              <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+              <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+              <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+              <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+              <span class="text-2xl font-bold text-gray-900 ml-2">4.8/5</span>
+            </div>
+            <span class="text-gray-600 text-sm">basée sur 124 avis</span>
+          </div>
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+            Ils utilisent Silia pour animer leurs structures au quotidien
+          </h2>
+          <p class="text-xl text-gray-600">
+            Des retours authentiques de structures qui utilisent Silia
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="bg-white p-8 rounded-lg shadow-lg border-2 border-gray-100 hover:border-indigo-600 transition-colors"
+          >
+            <div class="flex items-center gap-1 mb-4">
+              <svg
+                class="w-5 h-5 text-yellow-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg
+                class="w-5 h-5 text-yellow-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg
+                class="w-5 h-5 text-yellow-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg
+                class="w-5 h-5 text-yellow-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg
+                class="w-5 h-5 text-yellow-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+            </div>
+            <p class="text-gray-700 mb-6">
+              "Silia a transformé notre façon de communiquer avec nos employés.
+              L'application est intuitive et nos équipes l'adorent !"
+            </p>
+            <div class="flex items-center gap-3">
+              <div
+                class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 font-bold"
+              >
+                MC
+              </div>
+              <div>
+                <div class="font-semibold">Marie Dupont</div>
+                <div class="text-sm text-gray-500">Responsable CSE</div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="bg-white p-8 rounded-lg shadow-lg border-2 border-gray-100 hover:border-indigo-600 transition-colors"
+          >
+            <div class="flex items-center gap-1 mb-4">
+              <svg
+                class="w-5 h-5 text-yellow-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg
+                class="w-5 h-5 text-yellow-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg
+                class="w-5 h-5 text-yellow-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg
+                class="w-5 h-5 text-yellow-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg
+                class="w-5 h-5 text-yellow-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+            </div>
+            <p class="text-gray-700 mb-6">
+              "Un outil indispensable pour notre restaurant. Les notifications
+              push nous permettent d'informer nos clients en temps réel."
+            </p>
+            <div class="flex items-center gap-3">
+              <div
+                class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 font-bold"
+              >
+                JM
+              </div>
+              <div>
+                <div class="font-semibold">Jean Martin</div>
+                <div class="text-sm text-gray-500">Gérant de restaurant</div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="bg-white p-8 rounded-lg shadow-lg border-2 border-gray-100 hover:border-indigo-600 transition-colors"
+          >
+            <div class="flex items-center gap-1 mb-4">
+              <svg
+                class="w-5 h-5 text-yellow-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg
+                class="w-5 h-5 text-yellow-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg
+                class="w-5 h-5 text-yellow-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg
+                class="w-5 h-5 text-yellow-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg
+                class="w-5 h-5 text-yellow-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+            </div>
+            <p class="text-gray-700 mb-6">
+              "La collectivité a enfin un canal direct avec les citoyens. Le
+              support client est réactif et professionnel."
+            </p>
+            <div class="flex items-center gap-3">
+              <div
+                class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 font-bold"
+              >
+                SL
+              </div>
+              <div>
+                <div class="font-semibold">Sophie Leblanc</div>
+                <div class="text-sm text-gray-500">Mairie de ville</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA vers Feedback -->
+        <div class="text-center mt-12">
+          <a
+            href="contact.html"
+            class="inline-flex items-center px-6 py-3 bg-white border-2 border-indigo-600 text-indigo-600 font-semibold rounded-sm hover:bg-indigo-50 transition-all"
+          >
+            <i data-lucide="message-square" class="w-5 h-5 mr-2"></i>
+            Donnez votre avis sur Silia
+          </a>
+        </div>
+      </div>
+    
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section-block section-light py-20 bg-white" itemscope itemtype="https://schema.org/FAQPage">
+      <div class="mx-auto max-w-3xl px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+            Encore des questions ? On vous répond
+          </h2>
+          <p class="text-xl text-gray-600">
+            Tout ce que vous devez savoir sur Silia
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="border-2 border-gray-200 rounded-lg overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button
+              onclick="toggleFaq(1)"
+              class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"
+            >
+              <span class="font-semibold text-lg" itemprop="name"
+                >Comment puis-je commencer avec Silia ?</span
+              >
+              <svg
+                id="faq-icon-1"
+                class="w-6 h-6 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </button>
+            <div id="faq-content-1" class="hidden px-6 pb-6" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p class="text-gray-600" itemprop="text">
+                Il suffit de nous contacter pour une démonstration
+                personnalisée. Notre équipe vous accompagnera dans la
+                configuration de votre espace et la prise en main de
+                l'application.
+              </p>
+            </div>
+          </div>
+
+          <div class="border-2 border-gray-200 rounded-lg overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button
+              onclick="toggleFaq(2)"
+              class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"
+            >
+              <span class="font-semibold text-lg" itemprop="name"
+                >Quel est le coût de l'application ?</span
+              >
+              <svg
+                id="faq-icon-2"
+                class="w-6 h-6 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </button>
+            <div id="faq-content-2" class="hidden px-6 pb-6" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p class="text-gray-600" itemprop="text">
+                Nous proposons plusieurs formules adaptées à la taille de votre
+                structure. Contactez-nous pour obtenir un devis personnalisé.
+              </p>
+            </div>
+          </div>
+
+          <div class="border-2 border-gray-200 rounded-lg overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button
+              onclick="toggleFaq(3)"
+              class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"
+            >
+              <span class="font-semibold text-lg" itemprop="name"
+                >Puis-je personnaliser l'apparence de l'application ?</span
+              >
+              <svg
+                id="faq-icon-3"
+                class="w-6 h-6 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </button>
+            <div id="faq-content-3" class="hidden px-6 pb-6" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p class="text-gray-600" itemprop="text">
+                Absolument ! Vous pouvez personnaliser les couleurs, le logo, et
+                l'ensemble de l'interface pour qu'elle corresponde à votre
+                identité visuelle.
+              </p>
+            </div>
+          </div>
+
+          <div class="border-2 border-gray-200 rounded-lg overflow-hidden" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <button
+              onclick="toggleFaq(4)"
+              class="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"
+            >
+              <span class="font-semibold text-lg" itemprop="name"
+                >Quel type de support proposez-vous ?</span
+              >
+              <svg
+                id="faq-icon-4"
+                class="w-6 h-6 transition-transform"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </button>
+            <div id="faq-content-4" class="hidden px-6 pb-6" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p class="text-gray-600" itemprop="text">
+                Notre équipe est disponible 24/7 par email, téléphone et chat.
+                Nous nous engageons à répondre dans les plus brefs délais.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Contact Support -->
+        <div class="text-center mt-12">
+          <p class="text-gray-700 mb-4">Vous ne trouvez pas votre réponse ?</p>
+          <a
+            href="contact.html"
+            class="inline-flex items-center px-6 py-3 bg-indigo-600 text-white font-semibold rounded-sm hover:bg-indigo-700 transition-all"
+          >
+            <i data-lucide="mail" class="w-5 h-5 mr-2"></i>
+            Contactez notre équipe
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Referral / Parrainage Section -->
+    <section
+      id="parrainage"
+      class="section-block section-primary py-20 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50"
+    >
+      <div class="mx-auto max-w-screen-xl px-8">
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 px-6 py-3 bg-teal-100 rounded-full mb-6">
+            <i data-lucide="gift" class="w-5 h-5 text-teal-600"></i>
+            <span class="text-teal-700 font-semibold">Offre Parrainage</span>
+          </div>
+          <h2 class="text-4xl font-bold mb-4 text-gray-900">
+            Invitez vos partenaires — Gagnez des mois gratuits
+          </h2>
+          <p class="text-xl text-gray-700">
+            Recommandez Silia et bénéficiez d'avantages exclusifs
+          </p>
+          <p class="text-lg text-gray-600 mt-3 max-w-3xl mx-auto">
+            Chaque recommandation validée vous fait gagner du crédit et ouvre
+            l'accès à des bonus exclusifs.
+          </p>
+        </div>
+
+        <div class="grid xl:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
+          <!-- Carte principale -->
+          <div
+            class="relative overflow-hidden rounded-2xl border border-teal-200 bg-gradient-to-br from-teal-500 to-emerald-600 p-10 shadow-[0_30px_60px_rgba(13,148,136,0.25)]"
+          >
+            <div
+              class="pointer-events-none absolute -top-24 right-[-40px] h-64 w-64 rounded-full bg-white/20 blur-3xl"
+            ></div>
+            <div
+              class="pointer-events-none absolute -bottom-20 -left-16 h-56 w-56 rounded-full bg-emerald-400/20 blur-2xl"
+            ></div>
+            <span
+              class="inline-flex items-center gap-2 rounded-full bg-white/25 px-4 py-1 text-sm font-semibold uppercase tracking-wider text-white backdrop-blur-sm"
+            >
+              <i data-lucide="sparkles" class="h-4 w-4"></i>
+              Offre Parrainage
+            </span>
+            <h3 class="mt-6 text-3xl font-bold text-white">
+              1 mois offert pour vous et votre filleul
+            </h3>
+            <p class="mt-4 text-lg text-white/95 leading-relaxed">
+              Cumulez des mois gratuits et accédez à des améliorations premium
+              tout en aidant d'autres structures à moderniser leur
+              communication.
+            </p>
+
+            <!-- Points forts du programme -->
+            <div class="mt-8 grid grid-cols-2 gap-4">
+              <div
+                class="rounded-xl border border-white/30 bg-white/15 backdrop-blur-sm p-4 text-center text-white hover:bg-white/20 transition-all"
+              >
+                <i data-lucide="infinity" class="h-8 w-8 mx-auto mb-2"></i>
+                <p class="text-sm font-semibold">Sans limite de filleuls</p>
+              </div>
+              <div
+                class="rounded-xl border border-white/30 bg-white/15 backdrop-blur-sm p-4 text-center text-white hover:bg-white/20 transition-all"
+              >
+                <i data-lucide="bar-chart-3" class="h-8 w-8 mx-auto mb-2"></i>
+                <p class="text-sm font-semibold">Tableau de suivi dédié</p>
+              </div>
+              <div
+                class="rounded-xl border border-white/30 bg-white/15 backdrop-blur-sm p-4 text-center text-white hover:bg-white/20 transition-all"
+              >
+                <i data-lucide="gift" class="h-8 w-8 mx-auto mb-2"></i>
+                <p class="text-sm font-semibold">Bonus dès 3 parrainages</p>
+              </div>
+              <div
+                class="rounded-xl border border-white/30 bg-white/15 backdrop-blur-sm p-4 text-center text-white hover:bg-white/20 transition-all"
+              >
+                <i data-lucide="zap" class="h-8 w-8 mx-auto mb-2"></i>
+                <p class="text-sm font-semibold">Activation &lt; 48h</p>
+              </div>
+            </div>
+
+            <div
+              class="mt-8 rounded-xl border border-white/30 bg-white/15 backdrop-blur-sm p-5 text-white"
+            >
+              <div class="flex items-center gap-3 mb-3">
+                <i data-lucide="shield-check" class="h-6 w-6"></i>
+                <p class="text-lg font-semibold">
+                  Engagement contractuel sécurisé
+                </p>
+              </div>
+              <p class="text-sm text-white/90">
+                Toutes les recommandations sont suivies et validées par notre
+                équipe pour garantir vos récompenses.
+              </p>
+            </div>
+          </div>
+
+          <!-- Colonne droite -->
+          <div class="space-y-6">
+            <!-- Comment ça marche -->
+            <div
+              class="rounded-2xl border border-gray-200 bg-white p-8 shadow-xl"
+            >
+              <h3 class="text-2xl font-semibold text-gray-900 mb-2">
+                Comment ça marche ?
+              </h3>
+              <p class="text-sm text-gray-600 mb-6">
+                Simple et efficace en 3 étapes
+              </p>
+              <ol class="space-y-5">
+                <li class="flex gap-4">
+                  <span
+                    class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-teal-500 to-emerald-600 text-lg font-semibold text-white shadow-lg"
+                    >1</span
+                  >
+                  <div>
+                    <p class="text-lg font-semibold text-gray-900">
+                      Invitez votre réseau
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      Partagez votre lien de parrainage ou transmettez-nous les
+                      coordonnées de votre contact.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex gap-4">
+                  <span
+                    class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-teal-500 to-emerald-600 text-lg font-semibold text-white shadow-lg"
+                    >2</span
+                  >
+                  <div>
+                    <p class="text-lg font-semibold text-gray-900">
+                      On s'occupe de la démo
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      Notre équipe accompagne votre filleul jusqu'à la signature
+                      de son contrat.
+                    </p>
+                  </div>
+                </li>
+                <li class="flex gap-4">
+                  <span
+                    class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-teal-500 to-emerald-600 text-lg font-semibold text-white shadow-lg"
+                    >3</span
+                  >
+                  <div>
+                    <p class="text-lg font-semibold text-gray-900">
+                      Profitez de vos avantages
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      Les récompenses sont créditées dès l'activation du nouvel
+                      abonnement.
+                    </p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+
+            <!-- Avantages immédiats -->
+            <div
+              class="rounded-2xl border border-gray-200 bg-white p-8 shadow-xl"
+            >
+              <h3 class="text-2xl font-semibold text-gray-900 mb-6">
+                Pourquoi le recommander ?
+              </h3>
+              <div class="grid gap-5">
+                <!-- Parrain -->
+                <div
+                  class="rounded-xl border-2 border-teal-200 bg-gradient-to-br from-teal-50 to-emerald-50 p-5"
+                >
+                  <div class="flex items-center gap-2 mb-4">
+                    <i
+                      data-lucide="user-check"
+                      class="h-5 w-5 text-teal-600"
+                    ></i>
+                    <span
+                      class="text-sm font-semibold uppercase tracking-widest text-teal-700"
+                      >Parrain</span
+                    >
+                  </div>
+                  <ul class="space-y-2.5 text-sm text-gray-700">
+                    <li class="flex gap-2">
+                      <i
+                        data-lucide="check"
+                        class="mt-0.5 h-4 w-4 flex-shrink-0 text-teal-600"
+                      ></i>
+                      <span>1 mois offert sur votre abonnement d'un an</span>
+                    </li>
+                    <li class="flex gap-2">
+                      <i
+                        data-lucide="check"
+                        class="mt-0.5 h-4 w-4 flex-shrink-0 text-teal-600"
+                      ></i>
+                      <span>Accès à un channel Slack dédié</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Filleul -->
+                <div
+                  class="rounded-xl border-2 border-emerald-200 bg-gradient-to-br from-emerald-50 to-teal-50 p-5"
+                >
+                  <div class="flex items-center gap-2 mb-4">
+                    <i
+                      data-lucide="user-plus"
+                      class="h-5 w-5 text-emerald-600"
+                    ></i>
+                    <span
+                      class="text-sm font-semibold uppercase tracking-widest text-emerald-700"
+                      >Filleul</span
+                    >
+                  </div>
+                  <ul class="space-y-2.5 text-sm text-gray-700">
+                    <li class="flex gap-2">
+                      <i
+                        data-lucide="check"
+                        class="mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-600"
+                      ></i>
+                      <span>1 mois offert sur votre abonnement d'un an</span>
+                    </li>
+                    <li class="flex gap-2">
+                      <i
+                        data-lucide="check"
+                        class="mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-600"
+                      ></i>
+                      <span>Paramétrage offert de l'application</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <a
+            href="https://calendly.com/siliasas/demo"
+            target="_blank"
+            class="cta-button inline-flex items-center px-8 py-4 bg-gradient-to-r from-teal-600 to-emerald-600 text-white text-lg font-semibold rounded-lg hover:from-teal-700 hover:to-emerald-700 transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
+          >
+            Démarrer mon parrainage
+            <svg
+              class="ml-2 w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              ></path>
+            </svg>
+          </a>
+          <p class="mt-4 text-sm text-gray-600">
+            Un email automatique après l'inscription vous invitera à participer
+            au programme
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Preview -->
+    <section class="section-block section-soft py-20 bg-gray-50">
+      <div class="mx-auto max-w-screen-xl px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+            Nos derniers conseils pour une communication interne efficace
+          </h2>
+          <p class="text-xl text-gray-600">Découvrez nos articles et guides pratiques</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <article
+            class="bg-black rounded-lg border border-black overflow-hidden hover:shadow-2xl transition-shadow group"
+          >
+            <div class="relative h-72 overflow-hidden">
+              <img
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                src="images/photo-reunion.jpg"
+                alt="CSE Communication"
+              />
+            </div>
+            <div class="p-8 text-white">
+              <a
+                href="/blog/23"
+                class="block hover:opacity-80 transition-opacity"
+              >
+                <h3 class="text-2xl font-bold mb-4">
+                  Optimisez la Communication de votre CSE avec l'application
+                  Silia !
+                </h3>
+              </a>
+              <p class="mb-4 opacity-90">
+                Les Comités Sociaux et Économiques (CSE) jouent un rôle
+                essentiel dans la vie des entreprises, veillant au bien-être et
+                aux intérêts des employés...
+              </p>
+              <span class="text-sm opacity-70">07 Février 2024</span>
+            </div>
+          </article>
+
+          <article
+            class="bg-black rounded-lg border border-black overflow-hidden hover:shadow-2xl transition-shadow group"
+          >
+            <div class="relative h-72 overflow-hidden">
+              <img
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                src="images/photo-brasserie.jpg"
+                alt="Restaurant Communication"
+              />
+            </div>
+            <div class="p-8 text-white">
+              <a
+                href="/blog/22"
+                class="block hover:opacity-80 transition-opacity"
+              >
+                <h3 class="text-2xl font-bold mb-4">
+                  Révolutionnez le service clientèle de votre restaurant avec
+                  l'application Silia !!
+                </h3>
+              </a>
+              <p class="mb-4 opacity-90">
+                Dans le monde numérique d'aujourd'hui, une communication
+                efficace est la clé du succès pour les restaurants...
+              </p>
+              <span class="text-sm opacity-70">07 Février 2024</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="text-center mt-12">
+          <a
+            href="blog.html"
+            class="inline-flex items-center px-8 py-4 bg-indigo-600 text-white text-lg font-semibold rounded-sm hover:bg-indigo-700 transition-all"
+          >
+            Voir tous les articles
+            <svg
+              class="ml-2 w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download App Section -->
+    <section
+      class="section-block section-primary py-20 bg-gradient-to-br from-purple-600 to-indigo-600 text-white"
+    >
+      <div class="mx-auto max-w-screen-xl px-8">
+        <div
+          class="flex flex-col md:flex-row items-center justify-between gap-8"
+        >
+          <div class="md:w-2/3">
+            <h2 class="text-4xl font-bold mb-4">
+              Téléchargez l'application Silia
+            </h2>
+            <p class="text-xl opacity-90">
+              Notre application est compatible iOS et Android. Elle est
+              disponible sur l'App Store et sur le Play Store.
+            </p>
+          </div>
+          <div class="flex gap-6">
+            <a
+              href="https://play.google.com/store/apps/details?id=co.silia.silia"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-center w-28 h-28 rounded-lg border-2 border-white bg-white/10 backdrop-blur-sm shadow-lg hover:scale-105 hover:rotate-0 -rotate-6 transition-all"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="48"
+                height="48"
+                fill="white"
+              >
+                <path
+                  d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 0 1-.61-.92V2.734a1 1 0 0 1 .609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.198l2.807 1.626a1 1 0 0 1 0 1.73l-2.808 1.626L15.206 12l2.492-2.491zM5.864 2.658L16.802 8.99l-2.303 2.303-8.635-8.635z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://apps.apple.com/us/app/silia/id1625331708"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-center w-28 h-28 rounded-lg border-2 border-white bg-white/10 backdrop-blur-sm shadow-lg hover:scale-105 hover:rotate-0 rotate-6 transition-all"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="48"
+                height="48"
+                fill="white"
+              >
+                <path
+                  d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2zM8.823 15.343c-.395-.477-.886-.647-1.479-.509l-.15.041-.59 1.016a.823.823 0 0 0 1.366.916l.062-.093.79-1.371zM13.21 8.66c-.488.404-.98 1.597-.29 2.787l3.04 5.266a.824.824 0 0 0 1.476-.722l-.049-.1-.802-1.392h1.19a.82.82 0 0 0 .822-.823.82.82 0 0 0-.72-.816l-.103-.006h-2.14L13.44 9.057l-.23-.396zm.278-3.044a.825.825 0 0 0-1.063.21l-.062.092-.367.633-.359-.633a.824.824 0 0 0-1.476.722l.049.1.838 1.457-2.685 4.653H6.266a.82.82 0 0 0-.822.822c0 .421.312.766.719.817l.103.006h7.48c.34-.64-.06-1.549-.81-1.638l-.121-.007h-2.553l3.528-6.11a.823.823 0 0 0-.302-1.124z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FranceNum Badge -->
+    <section class="section-block section-light py-20 bg-white">
+      <div class="mx-auto max-w-2xl px-8 text-center">
+        <h2 class="text-3xl font-bold mb-8">
+          <span class="text-indigo-600">Silia</span>, une solution référencée
+          <span class="text-slate-500">FranceNum</span>
+        </h2>
+        <a
+          href="https://www.francenum.gouv.fr/activateurs/silia"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block w-56 h-56 rounded-lg border-2 border-black bg-gray-100 shadow-[0_5px_0_black] rotate-6 hover:rotate-0 transition-transform p-8 mb-8"
+        >
+          <img
+            class="w-full h-full object-contain"
+            src="images/france-num.jpg"
+            alt="FRANCE NUM"
+          />
+        </a>
+        <div>
+          <a
+            href="https://www.francenum.gouv.fr/activateurs/silia"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block px-8 py-4 bg-indigo-600 text-white rounded-sm font-semibold hover:bg-indigo-700 transition-colors"
+          >
+            En savoir plus
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="relative bg-gradient-to-br from-indigo-900 to-purple-900 text-white py-16"
+    >
+      <div class="mx-auto max-w-screen-xl px-8">
+        <!-- CTA Final Section -->
+        <div class="bg-gradient-to-r from-[#6c63ff] to-[#5a52e0] rounded-2xl p-12 mb-12 text-center shadow-2xl">
+          <h2 class="text-4xl font-bold mb-4">
+            Prêt à dynamiser votre communication interne ?
+          </h2>
+          <p class="text-xl mb-2 opacity-90">
+            Rejoignez les 80+ structures qui ont choisi Silia pour moderniser leur communication
+          </p>
+          <div class="flex flex-wrap gap-4 justify-center">
+            <a
+              href="https://calendly.com/siliasas/demo"
+              target="_blank"
+              class="inline-flex items-center px-8 py-4 bg-white text-indigo-600 text-lg font-semibold rounded-sm hover:bg-gray-100 transition-all shadow-lg"
+            >
+              Tester gratuitement
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+              </svg>
+            </a>
+            <a
+              href="dashboard-maquette.html"
+              class="inline-flex items-center px-8 py-4 bg-transparent border-2 border-white text-white text-lg font-semibold rounded-sm hover:bg-white/10 transition-all"
+            >
+              Essayer le back-office gratuit
+            </a>
+          </div>
+          <div class="mt-6 flex items-center justify-center gap-2 text-sm opacity-90">
+            <i data-lucide="mail" class="w-4 h-4"></i>
+            <a href="mailto:contact@silia.co" class="hover:underline">contact@silia.co</a>
+            <span class="mx-2">•</span>
+            <i data-lucide="phone" class="w-4 h-4"></i>
+            <span>Support disponible 7j/7</span>
+          </div>
+        </div>
+
+        <div
+          class="flex flex-col md:flex-row items-center justify-between gap-8 mb-12"
+        >
+          <a href="/">
+            <img class="h-16 w-auto" src="images/logo.png" alt="Silia" />
+          </a>
+
+          <nav class="flex flex-wrap justify-center gap-8">
+            <a
+              href="#fonctionnalites"
+              class="hover:opacity-80 transition-opacity"
+              >Fonctionnalités</a
+            >
+            <a href="#avis" class="hover:opacity-80 transition-opacity">Avis</a>
+            <a href="#faq" class="hover:opacity-80 transition-opacity">FAQ</a>
+            <a href="#parrainage" class="hover:opacity-80 transition-opacity"
+              >Parrainage</a
+            >
+            <a href="blog.html" class="hover:opacity-80 transition-opacity"
+              >Blog</a
+            >
+            <a href="contact.html" class="hover:opacity-80 transition-opacity"
+              >Contact</a
+            >
+          </nav>
+        </div>
+
+        <div
+          class="border-t border-white/20 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm"
+        >
+          <div class="flex flex-wrap gap-6 justify-center">
+            <a href="/legal" class="hover:opacity-80 transition-opacity"
+              >Mentions légales</a
+            >
+            <a
+              href="/privacy-policy"
+              class="hover:opacity-80 transition-opacity"
+              >Politique de confidentialité</a
+            >
+            <a href="contact.html" class="hover:opacity-80 transition-opacity"
+              >Contact</a
+            >
+          </div>
+          <div class="opacity-80">© 2025 Silia. Tous droits réservés.</div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="tour.js"></script>
+    <script src="js/client-tooltips.js"></script>
+    <script>
+      // Initialize Lucide icons
+      lucide.createIcons();
+    </script>
+  </body>
+</html>

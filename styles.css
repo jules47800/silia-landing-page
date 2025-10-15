@@ -1,0 +1,2739 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap");
+
+/* 🎨 Palette de couleurs Silia 2.0 - Variables CSS */
+:root {
+  /* Palette principale */
+  --silia-primary: #4f46e5; /* Indigo Digital - Couleur primaire */
+  --silia-secondary: #a5b4fc; /* Bleu clair doux - Secondaire claire */
+  --silia-accent-success: #10b981; /* Vert menthe - Accent positif */
+  --silia-accent-alert: #f87171; /* Corail doux - Accent d'alerte */
+  --silia-neutral-dark: #374151; /* Anthracite - Neutre foncé */
+  --silia-neutral-light: #e5e7eb; /* Gris clair - Neutre clair */
+  --silia-background-alt: #f9fafb; /* Blanc cassé - Fond alternatif */
+
+  /* Palette complémentaire */
+  --silia-link: #2563eb; /* Bleu azur - Accent de lien / hover */
+  --silia-highlight: #fcd34d; /* Jaune pastel - Mise en avant douce */
+  --silia-institutional: #1e293b; /* Bleu ardoise - Confiance / institutionnel */
+  --silia-interactive: #cbd5e1; /* Gris bleuté - Éléments interactifs neutres */
+
+  /* Nuances complémentaires pour dégradés et transitions */
+  --silia-primary-light: #6366f1;
+  --silia-primary-dark: #4338ca;
+  --silia-secondary-light: #c7d2fe;
+  --silia-secondary-dark: #818cf8;
+
+  /* Nuances pour les accents (hover, focus, etc.) */
+  --silia-accent-success-light: #34d399;
+  --silia-accent-success-dark: #0b9669;
+  --silia-accent-alert-light: #fca5a5;
+  --silia-accent-alert-dark: #e45454;
+  --silia-link-light: #60a5fa;
+  --silia-link-dark: #1d4ed8;
+  --silia-highlight-light: #fde68a;
+  --silia-highlight-dark: #f59e0b;
+  --silia-grain-texture: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http://www.w3.org/2000/svg%27%20width%3D%27120%27%20height%3D%27120%27%20viewBox%3D%270%200%20120%20120%27%3E%3Cfilter%20id%3D%27n%27%20x%3D%270%27%20y%3D%270%27%3E%3CfeTurbulence%20type%3D%27fractalNoise%27%20baseFrequency%3D%270.9%27%20numOctaves%3D%273%27%20stitchTiles%3D%27stitch%27/%3E%3C/filter%3E%3Crect%20width%3D%27120%27%20height%3D%27120%27%20filter%3D%27url(%23n)%27%20opacity%3D%270.45%27/%3E%3C/svg%3E");
+  --silia-grain-size: 160px;
+  --silia-grain-strength: 0.24;
+  --silia-grain-strength-hover: 0.34;
+  --silia-section-shadow: rgba(15, 23, 42, 0.06);
+}
+
+* {
+  font-family: "Inter", sans-serif;
+}
+
+/* Accessibility - Font Size Controls */
+body.text-base-small {
+  font-size: 14px;
+}
+
+body.text-base-small h1 {
+  font-size: 2.5rem;
+}
+body.text-base-small h2 {
+  font-size: 2rem;
+}
+body.text-base-small h3 {
+  font-size: 1.5rem;
+}
+body.text-base-small h4 {
+  font-size: 1.25rem;
+}
+body.text-base-small p,
+body.text-base-small a {
+  font-size: 0.875rem;
+}
+/* Règle commentée pour éviter les conflits de spécificité
+body.text-base-small span {
+  font-size: 0.875rem !important;
+}
+*/
+
+body.text-base-normal {
+  font-size: 16px;
+}
+
+body.text-base-normal h1 {
+  font-size: 3rem;
+}
+body.text-base-normal h2 {
+  font-size: 2.25rem;
+}
+body.text-base-normal h3 {
+  font-size: 1.875rem;
+}
+body.text-base-normal h4 {
+  font-size: 1.5rem;
+}
+body.text-base-normal p,
+body.text-base-normal a {
+  font-size: 1rem;
+}
+/* Règle commentée pour éviter les conflits de spécificité
+body.text-base-normal span {
+  font-size: 1rem !important;
+}
+*/
+
+body.text-base-large {
+  font-size: 18px;
+}
+
+body.text-base-large h1 {
+  font-size: 3.5rem;
+}
+body.text-base-large h2 {
+  font-size: 2.75rem;
+}
+body.text-base-large h3 {
+  font-size: 2.25rem;
+}
+body.text-base-large h4 {
+  font-size: 1.75rem;
+}
+body.text-base-large p,
+body.text-base-large a {
+  font-size: 1.125rem;
+}
+/* Règle commentée pour éviter les conflits de spécificité
+body.text-base-large span {
+  font-size: 1.125rem !important;
+}
+*/
+
+body.text-base-xlarge {
+  font-size: 20px;
+}
+
+body.text-base-xlarge h1 {
+  font-size: 4rem;
+}
+body.text-base-xlarge h2 {
+  font-size: 3rem;
+}
+body.text-base-xlarge h3 {
+  font-size: 2.5rem;
+}
+body.text-base-xlarge h4 {
+  font-size: 2rem;
+}
+body.text-base-xlarge p,
+body.text-base-xlarge a {
+  font-size: 1.25rem;
+}
+/* Règle commentée pour éviter les conflits de spécificité
+body.text-base-xlarge span {
+  font-size: 1.25rem !important;
+}
+*/
+
+/* Force font sizes for colored text elements (override Tailwind specificity) */
+body.text-base-small [class*="text-indigo"],
+body.text-base-small [class*="text-white"],
+body.text-base-small [class*="text-gray"],
+body.text-base-small [class*="text-black"],
+body.text-base-small [class*="text-purple"],
+body.text-base-small [class*="text-blue"],
+body.text-base-small [class*="text-green"],
+body.text-base-small [class*="text-red"],
+body.text-base-small [class*="text-yellow"],
+body.text-base-small [class*="text-orange"] {
+  font-size: 0.875rem !important;
+}
+
+/* Règles spécifiques pour les span colorés - tous les contextes */
+body.text-base-small span.text-indigo-600,
+body.text-base-small span[class*="text-indigo"],
+body.text-base-small h1 span.text-indigo-600,
+body.text-base-small h2 span.text-indigo-600,
+body.text-base-small h3 span.text-indigo-600,
+body.text-base-small p span.text-indigo-600,
+body.text-base-small div span.text-indigo-600,
+body.text-base-small section span.text-indigo-600,
+body.text-base-small .font-headings span.text-indigo-600 {
+  font-size: inherit !important;
+}
+
+body.text-base-normal [class*="text-indigo"],
+body.text-base-normal [class*="text-white"],
+body.text-base-normal [class*="text-gray"],
+body.text-base-normal [class*="text-black"],
+body.text-base-normal [class*="text-purple"],
+body.text-base-normal [class*="text-blue"],
+body.text-base-normal [class*="text-green"],
+body.text-base-normal [class*="text-red"],
+body.text-base-normal [class*="text-yellow"],
+body.text-base-normal [class*="text-orange"] {
+  font-size: 1rem !important;
+}
+
+/* Règles spécifiques pour les span colorés - tous les contextes */
+body.text-base-normal span.text-indigo-600,
+body.text-base-normal span[class*="text-indigo"],
+body.text-base-normal h1 span.text-indigo-600,
+body.text-base-normal h2 span.text-indigo-600,
+body.text-base-normal h3 span.text-indigo-600,
+body.text-base-normal p span.text-indigo-600,
+body.text-base-normal div span.text-indigo-600,
+body.text-base-normal section span.text-indigo-600,
+body.text-base-normal .font-headings span.text-indigo-600 {
+  font-size: inherit !important;
+}
+
+body.text-base-large [class*="text-indigo"],
+body.text-base-large [class*="text-white"],
+body.text-base-large [class*="text-gray"],
+body.text-base-large [class*="text-black"],
+body.text-base-large [class*="text-purple"],
+body.text-base-large [class*="text-blue"],
+body.text-base-large [class*="text-green"],
+body.text-base-large [class*="text-red"],
+body.text-base-large [class*="text-yellow"],
+body.text-base-large [class*="text-orange"] {
+  font-size: 1.125rem !important;
+}
+
+/* Règles spécifiques pour les span colorés - tous les contextes */
+body.text-base-large span.text-indigo-600,
+body.text-base-large span[class*="text-indigo"],
+body.text-base-large h1 span.text-indigo-600,
+body.text-base-large h2 span.text-indigo-600,
+body.text-base-large h3 span.text-indigo-600,
+body.text-base-large p span.text-indigo-600,
+body.text-base-large div span.text-indigo-600,
+body.text-base-large section span.text-indigo-600,
+body.text-base-large .font-headings span.text-indigo-600 {
+  font-size: inherit !important;
+}
+
+body.text-base-xlarge [class*="text-indigo"],
+body.text-base-xlarge [class*="text-white"],
+body.text-base-xlarge [class*="text-gray"],
+body.text-base-xlarge [class*="text-black"],
+body.text-base-xlarge [class*="text-purple"],
+body.text-base-xlarge [class*="text-blue"],
+body.text-base-xlarge [class*="text-green"],
+body.text-base-xlarge [class*="text-red"],
+body.text-base-xlarge [class*="text-yellow"],
+body.text-base-xlarge [class*="text-orange"] {
+  font-size: 1.25rem !important;
+}
+
+/* Règles spécifiques pour les span colorés - tous les contextes */
+body.text-base-xlarge span.text-indigo-600,
+body.text-base-xlarge span[class*="text-indigo"],
+body.text-base-xlarge h1 span.text-indigo-600,
+body.text-base-xlarge h2 span.text-indigo-600,
+body.text-base-xlarge h3 span.text-indigo-600,
+body.text-base-xlarge p span.text-indigo-600,
+body.text-base-xlarge div span.text-indigo-600,
+body.text-base-xlarge section span.text-indigo-600,
+body.text-base-xlarge .font-headings span.text-indigo-600 {
+  font-size: inherit !important;
+}
+
+/* Also apply to headings with colored text - maintain heading hierarchy */
+body.text-base-small h1[class*="text-"] {
+  font-size: 2.5rem !important;
+}
+
+/* Règles spécifiques pour le titre principal avec span indigo */
+body.text-base-small .font-headings span.text-indigo-600 {
+  font-size: 2.5rem !important;
+}
+body.text-base-small h2[class*="text-"] {
+  font-size: 2rem !important;
+}
+body.text-base-small h3[class*="text-"] {
+  font-size: 1.5rem !important;
+}
+body.text-base-small h4[class*="text-"] {
+  font-size: 1.25rem !important;
+}
+
+body.text-base-normal h1[class*="text-"] {
+  font-size: 3rem !important;
+}
+
+/* Règles spécifiques pour le titre principal avec span indigo */
+body.text-base-normal .font-headings span.text-indigo-600 {
+  font-size: 3rem !important;
+}
+body.text-base-normal h2[class*="text-"] {
+  font-size: 2.25rem !important;
+}
+body.text-base-normal h3[class*="text-"] {
+  font-size: 1.875rem !important;
+}
+body.text-base-normal h4[class*="text-"] {
+  font-size: 1.5rem !important;
+}
+
+body.text-base-large h1[class*="text-"] {
+  font-size: 3.5rem !important;
+}
+
+/* Règles spécifiques pour le titre principal avec span indigo */
+body.text-base-large .font-headings span.text-indigo-600 {
+  font-size: 3.5rem !important;
+}
+body.text-base-large h2[class*="text-"] {
+  font-size: 2.75rem !important;
+}
+body.text-base-large h3[class*="text-"] {
+  font-size: 2.25rem !important;
+}
+body.text-base-large h4[class*="text-"] {
+  font-size: 1.75rem !important;
+}
+
+body.text-base-xlarge h1[class*="text-"] {
+  font-size: 4rem !important;
+}
+
+/* Règles spécifiques pour le titre principal avec span indigo */
+body.text-base-xlarge .font-headings span.text-indigo-600 {
+  font-size: 4rem !important;
+}
+body.text-base-xlarge h2[class*="text-"] {
+  font-size: 3rem !important;
+}
+body.text-base-xlarge h3[class*="text-"] {
+  font-size: 2.5rem !important;
+}
+body.text-base-xlarge h4[class*="text-"] {
+  font-size: 2rem !important;
+}
+
+/* Special font size rules for .font-headings class */
+body.text-base-small .font-headings {
+  font-size: 2.5rem !important;
+}
+
+body.text-base-normal .font-headings {
+  font-size: 3rem !important;
+}
+
+body.text-base-large .font-headings {
+  font-size: 3.5rem !important;
+}
+
+body.text-base-xlarge .font-headings {
+  font-size: 4rem !important;
+}
+
+/* Override all Tailwind text size classes with accessibility sizes */
+/* Small size overrides */
+body.text-base-small .text-xs {
+  font-size: 0.75rem !important;
+}
+body.text-base-small .text-sm {
+  font-size: 0.875rem !important;
+}
+body.text-base-small .text-base {
+  font-size: 0.875rem !important;
+}
+body.text-base-small .text-lg {
+  font-size: 1rem !important;
+}
+body.text-base-small .text-xl {
+  font-size: 1.125rem !important;
+}
+body.text-base-small .text-2xl {
+  font-size: 1.25rem !important;
+}
+body.text-base-small .text-3xl {
+  font-size: 1.5rem !important;
+}
+body.text-base-small .text-4xl {
+  font-size: 2rem !important;
+}
+body.text-base-small .text-5xl {
+  font-size: 2.5rem !important;
+}
+
+/* Normal size overrides */
+body.text-base-normal .text-xs {
+  font-size: 0.75rem !important;
+}
+body.text-base-normal .text-sm {
+  font-size: 0.875rem !important;
+}
+body.text-base-normal .text-base {
+  font-size: 1rem !important;
+}
+body.text-base-normal .text-lg {
+  font-size: 1.125rem !important;
+}
+body.text-base-normal .text-xl {
+  font-size: 1.25rem !important;
+}
+body.text-base-normal .text-2xl {
+  font-size: 1.5rem !important;
+}
+body.text-base-normal .text-3xl {
+  font-size: 1.875rem !important;
+}
+body.text-base-normal .text-4xl {
+  font-size: 2.25rem !important;
+}
+body.text-base-normal .text-5xl {
+  font-size: 3rem !important;
+}
+
+/* Large size overrides */
+body.text-base-large .text-xs {
+  font-size: 0.875rem !important;
+}
+body.text-base-large .text-sm {
+  font-size: 1rem !important;
+}
+body.text-base-large .text-base {
+  font-size: 1.125rem !important;
+}
+body.text-base-large .text-lg {
+  font-size: 1.25rem !important;
+}
+body.text-base-large .text-xl {
+  font-size: 1.375rem !important;
+}
+body.text-base-large .text-2xl {
+  font-size: 1.75rem !important;
+}
+body.text-base-large .text-3xl {
+  font-size: 2.25rem !important;
+}
+body.text-base-large .text-4xl {
+  font-size: 2.75rem !important;
+}
+body.text-base-large .text-5xl {
+  font-size: 3.5rem !important;
+}
+
+/* X-Large size overrides */
+body.text-base-xlarge .text-xs {
+  font-size: 1rem !important;
+}
+body.text-base-xlarge .text-sm {
+  font-size: 1.125rem !important;
+}
+body.text-base-xlarge .text-base {
+  font-size: 1.25rem !important;
+}
+body.text-base-xlarge .text-lg {
+  font-size: 1.375rem !important;
+}
+body.text-base-xlarge .text-xl {
+  font-size: 1.5rem !important;
+}
+body.text-base-xlarge .text-2xl {
+  font-size: 2rem !important;
+}
+body.text-base-xlarge .text-3xl {
+  font-size: 2.5rem !important;
+}
+body.text-base-xlarge .text-4xl {
+  font-size: 3rem !important;
+}
+body.text-base-xlarge .text-5xl {
+  font-size: 4rem !important;
+}
+
+/* Override all button text sizes for accessibility */
+body.text-base-small button {
+  font-size: 0.875rem !important;
+}
+body.text-base-normal button {
+  font-size: 1rem !important;
+}
+body.text-base-large button {
+  font-size: 1.125rem !important;
+}
+body.text-base-xlarge button {
+  font-size: 1.25rem !important;
+}
+
+/* Styles de boutons standard Silia 2.0 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--silia-primary);
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--silia-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+}
+
+.btn-secondary {
+  background-color: white;
+  color: var(--silia-primary);
+  border: 1px solid var(--silia-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--silia-secondary-light);
+  border-color: var(--silia-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15);
+}
+
+.btn-success {
+  background-color: var(--silia-accent-success);
+  color: white;
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: var(
+    --silia-accent-success-dark,
+    #0b9669
+  ); /* Version légèrement plus foncée */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+}
+
+.btn-alert {
+  background-color: var(--silia-accent-alert);
+  color: white;
+  border: none;
+}
+
+.btn-alert:hover {
+  background-color: var(
+    --silia-accent-alert-dark,
+    #e45454
+  ); /* Version légèrement plus foncée */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(248, 113, 113, 0.25);
+}
+
+.btn-sm {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.125rem;
+}
+
+/* Override navigation link sizes */
+body.text-base-small nav a {
+  font-size: 0.875rem !important;
+}
+body.text-base-normal nav a {
+  font-size: 1rem !important;
+}
+body.text-base-large nav a {
+  font-size: 1.125rem !important;
+}
+body.text-base-xlarge nav a {
+  font-size: 1.25rem !important;
+}
+
+/* Navigation styling avec nouvelle charte */
+nav a {
+  color: var(--silia-neutral-dark);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+nav a:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--silia-primary);
+  transition: width 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--silia-primary);
+}
+
+nav a:hover:after {
+  width: 100%;
+}
+
+nav a.active {
+  color: var(--silia-primary);
+  font-weight: 600;
+}
+
+nav a.active:after {
+  width: 100%;
+}
+
+/* Override common text elements in sections for comprehensive coverage */
+/* Règles commentées pour éviter les conflits de spécificité
+body.text-base-small section p,
+body.text-base-small section span,
+body.text-base-small section a,
+body.text-base-small section div {
+  font-size: 0.875rem !important;
+}
+*/
+
+/* Règles commentées pour éviter les conflits de spécificité
+body.text-base-normal section p,
+body.text-base-normal section span,
+body.text-base-normal section a,
+body.text-base-normal section div {
+  font-size: 1rem !important;
+}
+*/
+
+/* Règles commentées pour éviter les conflits de spécificité
+body.text-base-large section p,
+body.text-base-large section span,
+body.text-base-large section a,
+body.text-base-large section div {
+  font-size: 1.125rem !important;
+}
+*/
+
+/* Règles commentées pour éviter les conflits de spécificité
+body.text-base-xlarge section p,
+body.text-base-xlarge section span,
+body.text-base-xlarge section a,
+body.text-base-xlarge section div {
+  font-size: 1.25rem !important;
+}
+*/
+
+/* Ensure headings still maintain hierarchy even with inherit */
+body.text-base-small section h1 {
+  font-size: 2.5rem !important;
+}
+body.text-base-small section h2 {
+  font-size: 2rem !important;
+}
+body.text-base-small section h3 {
+  font-size: 1.5rem !important;
+}
+body.text-base-small section h4 {
+  font-size: 1.25rem !important;
+}
+
+body.text-base-normal section h1 {
+  font-size: 3rem !important;
+}
+body.text-base-normal section h2 {
+  font-size: 2.25rem !important;
+}
+body.text-base-normal section h3 {
+  font-size: 1.875rem !important;
+}
+body.text-base-normal section h4 {
+  font-size: 1.5rem !important;
+}
+
+body.text-base-large section h1 {
+  font-size: 3.5rem !important;
+}
+body.text-base-large section h2 {
+  font-size: 2.75rem !important;
+}
+body.text-base-large section h3 {
+  font-size: 2.25rem !important;
+}
+body.text-base-large section h4 {
+  font-size: 1.75rem !important;
+}
+
+body.text-base-xlarge section h1 {
+  font-size: 4rem !important;
+}
+body.text-base-xlarge section h2 {
+  font-size: 3rem !important;
+}
+body.text-base-xlarge section h3 {
+  font-size: 2.5rem !important;
+}
+body.text-base-xlarge section h4 {
+  font-size: 2rem !important;
+}
+
+/* Final comprehensive override - catch any remaining elements */
+/* Règle commentée pour éviter les conflits de spécificité 
+body.text-base-small * {
+  font-size: 0.875rem !important;
+}
+*/
+body.text-base-small h1 {
+  font-size: 2.5rem !important;
+}
+body.text-base-small h2 {
+  font-size: 2rem !important;
+}
+body.text-base-small h3 {
+  font-size: 1.5rem !important;
+}
+body.text-base-small h4 {
+  font-size: 1.25rem !important;
+}
+body.text-base-small h5 {
+  font-size: 1.125rem !important;
+}
+body.text-base-small h6 {
+  font-size: 1rem !important;
+}
+
+/* Règle commentée pour éviter les conflits de spécificité
+body.text-base-normal * {
+  font-size: 1rem !important;
+}
+*/
+body.text-base-normal h1 {
+  font-size: 3rem !important;
+}
+body.text-base-normal h2 {
+  font-size: 2.25rem !important;
+}
+body.text-base-normal h3 {
+  font-size: 1.875rem !important;
+}
+body.text-base-normal h4 {
+  font-size: 1.5rem !important;
+}
+body.text-base-normal h5 {
+  font-size: 1.25rem !important;
+}
+body.text-base-normal h6 {
+  font-size: 1.125rem !important;
+}
+
+/* Règle commentée pour éviter les conflits de spécificité
+body.text-base-large * {
+  font-size: 1.125rem !important;
+}
+*/
+body.text-base-large h1 {
+  font-size: 3.5rem !important;
+}
+body.text-base-large h2 {
+  font-size: 2.75rem !important;
+}
+body.text-base-large h3 {
+  font-size: 2.25rem !important;
+}
+body.text-base-large h4 {
+  font-size: 1.75rem !important;
+}
+body.text-base-large h5 {
+  font-size: 1.375rem !important;
+}
+body.text-base-large h6 {
+  font-size: 1.25rem !important;
+}
+
+/* Règle commentée pour éviter les conflits de spécificité
+body.text-base-xlarge * {
+  font-size: 1.25rem !important;
+}
+*/
+body.text-base-xlarge h1 {
+  font-size: 4rem !important;
+}
+body.text-base-xlarge h2 {
+  font-size: 3rem !important;
+}
+body.text-base-xlarge h3 {
+  font-size: 2.5rem !important;
+}
+body.text-base-xlarge h4 {
+  font-size: 2rem !important;
+}
+body.text-base-xlarge h5 {
+  font-size: 1.5rem !important;
+}
+body.text-base-xlarge h6 {
+  font-size: 1.375rem !important;
+}
+
+/* Accessibility Controls Styling - Version burger menu discret */
+#accessibilityControls {
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--silia-neutral-light);
+  box-shadow: 0 4px 8px rgba(55, 65, 81, 0.08);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 50%;
+  padding: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: visible;
+}
+
+/* Bouton burger principal pour les contrôles de font */
+#accessibilityControls::before {
+  content: "aA";
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--silia-neutral-dark);
+  letter-spacing: -1px;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  position: relative;
+}
+
+#accessibilityControls:hover {
+  background-color: rgba(255, 255, 255, 1);
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(55, 65, 81, 0.12);
+}
+
+#accessibilityControls:hover::before {
+  color: var(--silia-primary);
+}
+
+/* Container des boutons - caché par défaut */
+#accessibilityControls > div {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--silia-neutral-light);
+  border-radius: 12px;
+  padding: 6px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  min-width: 50px;
+  animation: slideDown 0.2s ease-out;
+}
+
+/* Afficher le menu quand on clique */
+#accessibilityControls.open > div {
+  display: flex;
+}
+
+/* Changer l'icône aA en X quand ouvert */
+#accessibilityControls.open::before {
+  content: "×";
+  font-size: 26px;
+  font-weight: 300;
+  color: var(--silia-neutral-dark);
+  letter-spacing: 0;
+}
+
+#accessibilityControls button {
+  min-width: 38px;
+  height: 38px;
+  transition: all 0.2s ease;
+  color: var(--silia-neutral-dark) !important;
+  border-radius: 8px;
+  margin: 0;
+  opacity: 0.85;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: transparent !important;
+  border: none;
+  cursor: pointer;
+}
+
+/* Tailles progressives pour chaque bouton */
+#accessibilityControls button:nth-child(1) {
+  font-size: 0.75rem;
+}
+
+#accessibilityControls button:nth-child(2) {
+  font-size: 0.9rem;
+}
+
+#accessibilityControls button:nth-child(3) {
+  font-size: 1.1rem;
+}
+
+#accessibilityControls button:nth-child(4) {
+  font-size: 1.3rem;
+}
+
+#accessibilityControls button:hover {
+  transform: scale(1.05);
+  background-color: var(--silia-secondary-light) !important;
+  opacity: 1;
+}
+
+#accessibilityControls button.active {
+  background-color: var(--silia-primary) !important;
+  color: white !important;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  #accessibilityControls {
+    right: 8px;
+    top: 80px;
+    width: 40px;
+    height: 40px;
+  }
+
+  #accessibilityControls::before {
+    font-size: 12px;
+  }
+
+  #accessibilityControls.open::before {
+    font-size: 22px;
+  }
+
+  #accessibilityControls button {
+    min-width: 36px;
+    height: 36px;
+    font-size: 0.8rem;
+  }
+
+  #accessibilityControls > div {
+    min-width: 46px;
+  }
+}
+
+/* Typography */
+.font-headings {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--silia-neutral-dark);
+}
+
+.font-headings .highlight {
+  color: var(--silia-primary);
+}
+
+@media (max-width: 1024px) {
+  .font-headings {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .font-headings {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .font-headings {
+    font-size: 2rem;
+  }
+}
+
+/* Animations */
+@keyframes floating-1 {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+}
+
+@keyframes floating-2 {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(-3deg);
+  }
+}
+
+@keyframes floating-3 {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(1deg);
+  }
+}
+
+@keyframes floating-4 {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-25px);
+  }
+}
+
+.floating-1 {
+  animation: floating-1 6s ease-in-out infinite;
+}
+.floating-2 {
+  animation: floating-2 5s ease-in-out infinite;
+}
+.floating-3 {
+  animation: floating-3 7s ease-in-out infinite;
+}
+.floating-4 {
+  animation: floating-4 4s ease-in-out infinite;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes siliaGrainShift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-12px, 8px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scroll offset for fixed header - prevents anchors from hiding behind header */
+section[id] {
+  scroll-margin-top: 100px;
+}
+
+/* Section layout & atmospheric grain */
+.section-block {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  z-index: 0;
+  box-shadow: inset 0 1px 0 var(--silia-section-shadow),
+    inset 0 -1px 0 rgba(15, 23, 42, 0.05);
+}
+
+.section-block::before,
+.section-block::after {
+  content: "";
+  position: absolute;
+  inset: -12%;
+  pointer-events: none;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.section-block::before {
+  z-index: 0;
+  opacity: 0.7;
+}
+
+.section-block::after {
+  z-index: 1;
+  background-image: var(--silia-grain-texture);
+  background-size: var(--silia-grain-size);
+  opacity: var(--silia-grain-strength);
+  mix-blend-mode: soft-light;
+  animation: siliaGrainShift 18s linear infinite;
+}
+
+.section-block:hover::before {
+  transform: scale(1.02) translate3d(0, -4px, 0);
+  opacity: 0.85;
+}
+
+.section-block:hover::after {
+  opacity: var(--silia-grain-strength-hover);
+}
+
+.section-block > :not(.absolute) {
+  position: relative;
+  z-index: 2;
+}
+
+.section-light::before {
+  background: radial-gradient(
+      circle at 3% -10%,
+      rgba(99, 102, 241, 0.2),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 95% 0%,
+      rgba(165, 180, 252, 0.18),
+      transparent 60%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.45) 0%,
+      rgba(255, 255, 255, 0) 65%
+    );
+}
+
+.section-soft::before {
+  background: radial-gradient(
+      circle at 10% 15%,
+      rgba(79, 70, 229, 0.18),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 90% 85%,
+      rgba(251, 191, 36, 0.14),
+      transparent 60%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.35) 0%,
+      rgba(148, 163, 184, 0.08) 75%
+    );
+  opacity: 0.64;
+}
+
+.section-dark {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    inset 0 -1px 0 rgba(15, 23, 42, 0.45);
+}
+
+.section-dark::before {
+  background: radial-gradient(
+      circle at 15% 15%,
+      rgba(96, 165, 250, 0.25),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(129, 140, 248, 0.22),
+      transparent 50%
+    ),
+    linear-gradient(180deg, rgba(15, 23, 42, 0.6) 0%, rgba(15, 23, 42, 0) 75%);
+  opacity: 0.45;
+  mix-blend-mode: screen;
+}
+
+.section-dark::after {
+  mix-blend-mode: screen;
+  opacity: 0.15;
+}
+
+.section-primary::before {
+  background: radial-gradient(
+      circle at 0% -10%,
+      rgba(255, 255, 255, 0.4),
+      transparent 55%
+    ),
+    radial-gradient(circle at 85% 0%, rgba(165, 180, 252, 0.3), transparent 55%),
+    linear-gradient(
+      195deg,
+      rgba(79, 70, 229, 0.35) 0%,
+      rgba(37, 99, 235, 0) 70%
+    );
+  opacity: 0.78;
+}
+
+.section-primary::after {
+  mix-blend-mode: overlay;
+  opacity: 0.2;
+}
+
+.section-hero {
+  box-shadow: inset 0 -1px 0 rgba(15, 23, 42, 0.05);
+}
+
+.section-hero::before {
+  background: radial-gradient(
+      circle at 15% -20%,
+      rgba(255, 255, 255, 0.55),
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(129, 140, 248, 0.25),
+      transparent 60%
+    );
+  opacity: 0.65;
+}
+
+/* Tour guide overlay */
+.tour-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+}
+
+.tour-overlay.active {
+  display: flex;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.tour-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  max-width: 800px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.tour-spotlight {
+  position: absolute;
+  border: 3px solid var(--silia-primary);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.85);
+  pointer-events: none;
+  z-index: 9998;
+  transition: all 0.4s ease;
+}
+
+/* Dashboard Preview in Tour */
+.dashboard-preview {
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-top: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  background: white;
+}
+
+.dashboard-sidebar {
+  background: linear-gradient(
+    180deg,
+    var(--silia-primary) 0%,
+    var(--silia-primary-dark) 100%
+  );
+  width: 80px;
+  padding: 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.dashboard-nav-item {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.dashboard-nav-item:hover,
+.dashboard-nav-item.active {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.dashboard-content {
+  flex: 1;
+  padding: 1.5rem;
+  background: #f9fafb;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.dashboard-table {
+  background: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+
+.dashboard-table-header {
+  background: #f9fafb;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.dashboard-table-row {
+  padding: 1rem;
+  border-bottom: 1px solid #f3f4f6;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: background 0.2s;
+}
+
+.dashboard-table-row:hover {
+  background: #f9fafb;
+}
+
+.dashboard-badge {
+  display: inline-flex;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.dashboard-badge.success {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--silia-accent-success);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.dashboard-badge.warning {
+  background: rgba(252, 211, 77, 0.15);
+  color: #92400e;
+  border: 1px solid rgba(252, 211, 77, 0.3);
+}
+
+.dashboard-badge.info {
+  background: rgba(165, 180, 252, 0.15);
+  color: var(--silia-link);
+  border: 1px solid rgba(165, 180, 252, 0.3);
+}
+
+.dashboard-badge.danger {
+  background: rgba(248, 113, 113, 0.15);
+  color: var(--silia-accent-alert);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+/* Logo carousel */
+.logo-scroll {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  margin: 0 auto;
+  max-width: 100%;
+  padding: 1.5rem 0;
+  padding-bottom: 4rem; /* Espace supplémentaire pour les tooltips */
+  margin-bottom: 2rem; /* Marge supplémentaire entre sections */
+}
+
+.logo-scroll-inner {
+  display: inline-block;
+  animation: scroll 40s linear infinite;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-scroll:hover .logo-scroll-inner {
+  animation-play-state: paused;
+}
+
+/* Logo client card styling */
+.logo-scroll img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  transition: all 0.3s ease;
+  filter: grayscale(0%); /* Garder les logos en couleur */
+}
+
+.logo-scroll .w-40 {
+  transition: all 0.3s ease;
+}
+
+.logo-scroll .w-40:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.15);
+  background-color: var(--silia-background-alt);
+}
+
+/* Tooltips pour les logos clients - solution simplifiée */
+.logo-tooltip {
+  position: absolute;
+  left: 50%;
+  bottom: -70px;
+  transform: translateX(-50%);
+  background-color: rgba(
+    30,
+    41,
+    59,
+    0.95
+  ); /* --silia-institutional avec transparence */
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  min-width: 200px;
+  max-width: 300px;
+  text-align: center;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+  white-space: normal;
+  line-height: 1.4;
+  pointer-events: none;
+  border-bottom: 3px solid var(--silia-primary);
+}
+
+/* Stats counter animation */
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat-number {
+  animation: countUp 1s ease-out forwards;
+}
+
+/* CTA Button hover */
+.cta-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background-color: var(
+    --silia-primary
+  ); /* Utilisation de la couleur primaire Silia */
+  color: white;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.25);
+}
+
+/* CTA Button blanc sur bleu - préserve le style même sur fond bleu */
+.cta-button.bg-white,
+.cta-button[class*="bg-white"] {
+  background-color: white !important;
+  color: var(--silia-primary) !important;
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.3);
+}
+
+.cta-button.bg-white:hover,
+.cta-button[class*="bg-white"]:hover {
+  background-color: var(--silia-background-alt) !important;
+  color: var(--silia-primary-dark) !important;
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+}
+
+.cta-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.cta-button:hover {
+  background-color: var(
+    --silia-primary-dark
+  ); /* Utilisation de la couleur primaire foncée au survol */
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.35);
+  transform: translateY(-2px);
+}
+
+.cta-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* CTA secondaire */
+.cta-secondary {
+  border: 2px solid var(--silia-primary);
+  color: var(--silia-primary);
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.cta-secondary:hover {
+  background-color: var(--silia-secondary-light);
+  border-color: var(--silia-primary-dark);
+  color: var(--silia-primary-dark);
+}
+
+/* Tour Progress Dots */
+.tour-dots {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.tour-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #d1d5db;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.tour-dot.active {
+  background: var(--silia-primary);
+  transform: scale(1.3);
+}
+
+.tour-dot:hover {
+  background: var(--silia-primary-light);
+}
+
+/* Feature Card Hover Effect */
+.feature-card {
+  transition: all 0.3s ease;
+  background-color: white;
+  border: 1px solid var(--silia-neutral-light);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(79, 70, 229, 0.1);
+  border-color: var(--silia-secondary);
+}
+
+.feature-card .feature-icon {
+  background: linear-gradient(
+    135deg,
+    var(--silia-secondary-light) 0%,
+    var(--silia-secondary) 100%
+  );
+  color: var(--silia-primary);
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+  background: linear-gradient(
+    135deg,
+    var(--silia-primary-light) 0%,
+    var(--silia-primary) 100%
+  );
+  color: white;
+  transform: scale(1.05);
+}
+
+.feature-card h3 {
+  color: var(--silia-neutral-dark);
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.feature-card p {
+  color: #64748b; /* Couleur texte descriptif */
+}
+
+/* Tooltip for dashboard preview */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: var(--silia-institutional);
+  color: #fff;
+  text-align: center;
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Shimmer loading effect for dashboard preview */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(to right, #f3f4f6 4%, #e5e7eb 25%, #f3f4f6 36%);
+  background-size: 1000px 100%;
+}
+
+/* Mobile responsive tour */
+@media (max-width: 640px) {
+  .tour-content {
+    padding: 1.5rem;
+    max-width: 95%;
+  }
+
+  .dashboard-preview {
+    font-size: 0.75rem;
+  }
+
+  .dashboard-sidebar {
+    width: 60px;
+    padding: 0.75rem 0.25rem;
+  }
+
+  .dashboard-nav-item {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Pulse animation for highlights */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+.pulse-ring {
+  animation: pulse-ring 1.5s ease-out infinite;
+}
+
+/* Dashboard Preview Screen Mockup */
+.screen-mockup {
+  border: 8px solid #1f2937;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.screen-mockup::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: #1f2937;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+}
+
+/* Interactive hover states */
+.interactive-item {
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.interactive-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+}
+
+/* Tour navigation buttons */
+.tour-nav-button {
+  transition: all 0.3s ease;
+  background-color: var(--silia-primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.tour-nav-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tour-nav-button:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+  background-color: var(--silia-primary-dark);
+}
+
+.tour-nav-button.secondary {
+  background-color: white;
+  color: var(--silia-neutral-dark);
+  border: 1px solid var(--silia-neutral-light);
+}
+
+/* Styles spécifiques pour les boutons du tour sur fond bleu */
+.bg-silia-primary .tour-nav-button,
+.header-silia .tour-nav-button,
+[class*="bg-indigo"] .tour-nav-button {
+  background-color: var(--silia-accent-success);
+}
+
+.bg-silia-primary .tour-nav-button:not(:disabled):hover,
+.header-silia .tour-nav-button:not(:disabled):hover,
+[class*="bg-indigo"] .tour-nav-button:not(:disabled):hover {
+  background-color: var(--silia-accent-success-dark);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.bg-silia-primary .tour-nav-button.secondary,
+.header-silia .tour-nav-button.secondary,
+[class*="bg-indigo"] .tour-nav-button.secondary {
+  background-color: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.bg-silia-primary .tour-nav-button.secondary:not(:disabled):hover,
+.header-silia .tour-nav-button.secondary:not(:disabled):hover,
+[class*="bg-indigo"] .tour-nav-button.secondary:not(:disabled):hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: white;
+}
+
+.tour-nav-button.secondary:not(:disabled):hover {
+  background-color: var(--silia-background-alt);
+  color: var(--silia-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.bg-black {
+  background: url("images/bg-noir.png");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Sections avec les nouvelles couleurs Silia 2.0 */
+.bg-gradient-primary {
+  background: linear-gradient(
+    135deg,
+    var(--silia-primary) 0%,
+    var(--silia-primary-dark) 100%
+  );
+  color: white;
+}
+
+.bg-gradient-light {
+  background: linear-gradient(
+    135deg,
+    var(--silia-background-alt) 0%,
+    var(--silia-neutral-light) 100%
+  );
+}
+
+/* Headers avec la nouvelle identité visuelle */
+.header-silia {
+  background-color: var(--silia-primary);
+  box-shadow: 0 4px 20px rgba(79, 70, 229, 0.15);
+}
+
+/* Navigation spécifique pour le header - assurer la lisibilité sur fond bleu */
+.header-silia nav a {
+  color: white;
+}
+
+.header-silia nav a:after {
+  background-color: white;
+}
+
+.header-silia nav a:hover,
+.header-silia nav a.active {
+  color: var(--silia-secondary-light);
+}
+
+/* Boutons d'action de l'interface */
+.btn-action {
+  background-color: var(--silia-accent-success);
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.btn-action:hover {
+  background-color: var(
+    --silia-accent-success-dark
+  ); /* Version légèrement plus foncée */
+  transform: translateY(-1px);
+}
+
+/* Boutons pour les éléments sur fond bleu (header, sections bleu) */
+.btn-on-primary {
+  background-color: white;
+  color: var(--silia-primary);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-on-primary:hover {
+  background-color: var(--silia-background-alt);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.25);
+}
+
+/* Bouton secondaire sur fond bleu */
+.btn-on-primary-secondary {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  transition: all 0.3s ease;
+}
+
+.btn-on-primary-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Alertes et notifications */
+.alert-silia {
+  border-left: 4px solid var(--silia-highlight);
+  background-color: rgba(252, 211, 77, 0.1);
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+
+/* Remplacements supplémentaires pour la palette Silia 2.0 */
+.bg-green-500 {
+  background-color: var(--silia-accent-success) !important;
+}
+.text-green-500,
+.text-green-600,
+.text-green-700 {
+  color: var(--silia-accent-success) !important;
+}
+
+.bg-red-500 {
+  background-color: var(--silia-accent-alert) !important;
+}
+.text-red-500,
+.text-red-600,
+.text-red-700 {
+  color: var(--silia-accent-alert) !important;
+}
+
+.bg-blue-500,
+.bg-blue-600 {
+  background-color: var(--silia-link) !important;
+}
+.text-blue-500,
+.text-blue-600,
+.text-blue-700 {
+  color: var(--silia-link) !important;
+}
+
+.bg-yellow-400,
+.bg-yellow-500 {
+  background-color: var(--silia-highlight) !important;
+}
+.text-yellow-500,
+.text-yellow-600,
+.text-yellow-700 {
+  color: var(--silia-highlight) !important;
+}
+
+.bg-gray-800,
+.bg-gray-900 {
+  background-color: var(--silia-neutral-dark) !important;
+}
+.text-gray-800,
+.text-gray-900 {
+  color: var(--silia-neutral-dark) !important;
+}
+
+.bg-gray-100,
+.bg-gray-200 {
+  background-color: var(--silia-neutral-light) !important;
+}
+.bg-gray-50 {
+  background-color: var(--silia-background-alt) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  /* Tablet adjustments */
+  section {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .dashboard-preview {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Mobile adjustments */
+  section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .tour-content {
+    max-width: 95%;
+    padding: 1.5rem;
+  }
+
+  .dashboard-preview {
+    font-size: 0.75rem;
+  }
+
+  .dashboard-sidebar {
+    width: 60px;
+    padding: 0.75rem 0.25rem;
+  }
+
+  .dashboard-nav-item {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Client logos section */
+  .logo-scroll .w-40 {
+    width: 7rem;
+    height: 6rem;
+  }
+
+  .logo-scroll .gap-12 {
+    gap: 1.5rem;
+  }
+
+  .logo-scroll img {
+    max-width: 90%;
+    max-height: 90%;
+  }
+
+  .logo-scroll [title]::after {
+    min-width: 150px;
+    bottom: -50px;
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  /* Adjust grid layouts for mobile */
+  .grid.grid-cols-2,
+  .grid.grid-cols-3,
+  .grid.grid-cols-4 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Stack feature cards vertically */
+  .grid.md\\:grid-cols-2,
+  .grid.md\\:grid-cols-3 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Adjust spacing */
+  .gap-8 {
+    gap: 1.5rem;
+  }
+
+  .gap-12 {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Small mobile adjustments */
+  .text-4xl {
+    font-size: 1.875rem;
+  }
+
+  .text-3xl {
+    font-size: 1.5rem;
+  }
+
+  .text-2xl {
+    font-size: 1.25rem;
+  }
+
+  .text-xl {
+    font-size: 1.125rem;
+  }
+
+  .px-8 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .py-20 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .py-16 {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  /* Client logos for small mobile */
+  .logo-scroll .w-40 {
+    width: 6rem;
+    height: 5rem;
+    padding: 0.25rem;
+  }
+
+  .logo-scroll .gap-12 {
+    gap: 1rem;
+  }
+
+  .custom-tooltip {
+    max-width: 200px;
+    bottom: -60px;
+    font-size: 0.7rem;
+  }
+
+  /* Adjust logo animations for better performance on small devices */
+  .logo-scroll-inner {
+    animation-duration: 30s;
+  }
+}
+
+/* Menu hamburger discret et animation du menu mobile */
+.hamburger-menu {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  opacity: 0.75;
+}
+
+.hamburger-menu:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  opacity: 1;
+}
+
+.hamburger-menu .bar {
+  position: relative;
+  width: 18px;
+  height: 2px;
+  background-color: currentColor;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.hamburger-menu .bar:before,
+.hamburger-menu .bar:after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 2px;
+  background-color: currentColor;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-menu .bar:before {
+  transform: translateY(-5px);
+}
+
+.hamburger-menu .bar:after {
+  transform: translateY(5px);
+}
+
+.hamburger-menu.active .bar {
+  background-color: transparent;
+}
+
+.hamburger-menu.active .bar:before {
+  transform: rotate(45deg);
+}
+
+.hamburger-menu.active .bar:after {
+  transform: rotate(-45deg);
+}
+
+/* Styles pour le bouton de menu mobile existant */
+button[aria-label="Toggle menu"] {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: none; /* Caché par défaut */
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  opacity: 0.85;
+  padding: 0 !important;
+}
+
+/* Visible uniquement sur mobile/tablette */
+@media (max-width: 1023px) {
+  button[aria-label="Toggle menu"] {
+    display: flex;
+  }
+}
+
+button[aria-label="Toggle menu"]:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+button[aria-label="Toggle menu"] svg {
+  transition: all 0.3s ease;
+  width: 22px;
+  height: 22px;
+}
+
+/* Animation pour l'icône hamburger */
+button[aria-label="Toggle menu"] #menuIcon {
+  transform-origin: center;
+}
+
+button[aria-label="Toggle menu"] #closeIcon {
+  transform-origin: center;
+}
+
+/* Styles pour le header sur fond sombre */
+.header-silia button[aria-label="Toggle menu"],
+header[class*="bg-indigo"] button[aria-label="Toggle menu"] {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.header-silia button[aria-label="Toggle menu"]:hover,
+header[class*="bg-indigo"] button[aria-label="Toggle menu"]:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Fond semi-transparent pour le menu mobile */
+#mobileMenu {
+  animation: slideDown 0.3s ease-out;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--silia-neutral-light);
+  overflow: hidden;
+}
+
+#mobileMenu nav a {
+  padding: 0.75rem 1.25rem;
+  transition: all 0.2s ease;
+  position: relative;
+  opacity: 0.85;
+}
+
+#mobileMenu nav a:hover {
+  background-color: var(--silia-secondary-light);
+  opacity: 1;
+}
+
+#mobileMenu nav a.active {
+  background-color: var(--silia-primary);
+  color: white;
+  opacity: 1;
+}
+
+#mobileMenu nav a.active:after {
+  display: none;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Bouton de changement de police */
+.font-size-toggle {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--silia-neutral-light);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: var(--silia-neutral-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  opacity: 0.8;
+  cursor: pointer;
+  z-index: 40;
+}
+
+.font-size-toggle:hover {
+  opacity: 1;
+  background-color: white;
+  transform: scale(1.05);
+}
+
+.font-size-toggle .icon {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.font-size-toggle.active {
+  background-color: var(--silia-primary);
+  color: white;
+  opacity: 1;
+}
+
+/* Menu déroulant pour la sélection de taille de police */
+.font-size-dropdown {
+  position: absolute;
+  top: calc(100% + 5px);
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--silia-neutral-light);
+  padding: 6px;
+  display: none;
+  flex-direction: column;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 40;
+  min-width: 120px;
+}
+
+.font-size-dropdown.show {
+  display: flex;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.font-size-dropdown button {
+  padding: 8px 12px;
+  text-align: left;
+  border-radius: 6px;
+  margin: 2px 0;
+  transition: all 0.2s ease;
+  opacity: 0.85;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
+.font-size-dropdown button:hover {
+  background-color: var(--silia-secondary-light);
+  opacity: 1;
+}
+
+.font-size-dropdown button.active {
+  background-color: var(--silia-primary);
+  color: white;
+  opacity: 1;
+  font-weight: 500;
+}
+
+.font-size-dropdown button .size-indicator {
+  display: inline-block;
+  margin-right: 8px;
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Classes utilitaires pour la palette Silia 2.0 */
+.bg-silia-primary {
+  background-color: var(--silia-primary);
+}
+.bg-silia-secondary {
+  background-color: var(--silia-secondary);
+}
+.bg-silia-success {
+  background-color: var(--silia-accent-success);
+}
+.bg-silia-alert {
+  background-color: var(--silia-accent-alert);
+}
+.bg-silia-dark {
+  background-color: var(--silia-neutral-dark);
+}
+.bg-silia-light {
+  background-color: var(--silia-neutral-light);
+}
+.bg-silia-bg-alt {
+  background-color: var(--silia-background-alt);
+}
+.bg-silia-link {
+  background-color: var(--silia-link);
+}
+.bg-silia-highlight {
+  background-color: var(--silia-highlight);
+}
+.bg-silia-institutional {
+  background-color: var(--silia-institutional);
+}
+.bg-silia-interactive {
+  background-color: var(--silia-interactive);
+}
+
+/* Remplacement des classes Tailwind par la palette Silia 2.0 */
+.bg-indigo-600 {
+  background-color: var(--silia-primary) !important;
+}
+.bg-indigo-700 {
+  background-color: var(--silia-primary-dark) !important;
+}
+.bg-indigo-500 {
+  background-color: var(--silia-primary-light) !important;
+}
+.bg-indigo-50 {
+  background-color: var(--silia-secondary-light) !important;
+}
+.bg-indigo-100 {
+  background-color: var(--silia-secondary) !important;
+}
+.bg-indigo-800 {
+  background-color: var(--silia-institutional) !important;
+}
+
+.text-indigo-600 {
+  color: var(--silia-primary) !important;
+}
+.text-indigo-700 {
+  color: var(--silia-primary-dark) !important;
+}
+.text-indigo-500 {
+  color: var(--silia-primary-light) !important;
+}
+
+.border-indigo-600 {
+  border-color: var(--silia-primary) !important;
+}
+.border-indigo-500 {
+  border-color: var(--silia-primary-light) !important;
+}
+
+.hover\:bg-indigo-700:hover {
+  background-color: var(--silia-primary-dark) !important;
+}
+.hover\:bg-indigo-600:hover {
+  background-color: var(--silia-primary) !important;
+}
+.hover\:bg-indigo-50:hover {
+  background-color: var(--silia-secondary-light) !important;
+}
+.hover\:bg-indigo-200:hover {
+  background-color: var(--silia-secondary-dark) !important;
+}
+
+.hover\:text-indigo-600:hover {
+  color: var(--silia-primary) !important;
+}
+.hover\:text-indigo-700:hover {
+  color: var(--silia-primary-dark) !important;
+}
+
+.text-silia-primary {
+  color: var(--silia-primary);
+}
+.text-silia-secondary {
+  color: var(--silia-secondary);
+}
+.text-silia-success {
+  color: var(--silia-accent-success);
+}
+.text-silia-alert {
+  color: var(--silia-accent-alert);
+}
+.text-silia-dark {
+  color: var(--silia-neutral-dark);
+}
+.text-silia-light {
+  color: var(--silia-neutral-light);
+}
+.text-silia-link {
+  color: var(--silia-link);
+}
+.text-silia-highlight {
+  color: var(--silia-highlight);
+}
+.text-silia-institutional {
+  color: var(--silia-institutional);
+}
+.text-silia-interactive {
+  color: var(--silia-interactive);
+}
+
+.border-silia-primary {
+  border-color: var(--silia-primary);
+}
+.border-silia-secondary {
+  border-color: var(--silia-secondary);
+}
+.border-silia-success {
+  border-color: var(--silia-accent-success);
+}
+.border-silia-alert {
+  border-color: var(--silia-accent-alert);
+}
+.border-silia-dark {
+  border-color: var(--silia-neutral-dark);
+}
+.border-silia-light {
+  border-color: var(--silia-neutral-light);
+}
+.border-silia-link {
+  border-color: var(--silia-link);
+}
+.border-silia-highlight {
+  border-color: var(--silia-highlight);
+}
+.border-silia-institutional {
+  border-color: var(--silia-institutional);
+}
+.border-silia-interactive {
+  border-color: var(--silia-interactive);
+}
+
+/* Classes pour les nuances */
+.bg-silia-primary-light {
+  background-color: var(--silia-primary-light);
+}
+.bg-silia-primary-dark {
+  background-color: var(--silia-primary-dark);
+}
+.bg-silia-secondary-light {
+  background-color: var(--silia-secondary-light);
+}
+.bg-silia-secondary-dark {
+  background-color: var(--silia-secondary-dark);
+}
+.bg-silia-success-light {
+  background-color: var(--silia-accent-success-light);
+}
+.bg-silia-success-dark {
+  background-color: var(--silia-accent-success-dark);
+}
+.bg-silia-alert-light {
+  background-color: var(--silia-accent-alert-light);
+}
+.bg-silia-alert-dark {
+  background-color: var(--silia-accent-alert-dark);
+}
+.bg-silia-link-light {
+  background-color: var(--silia-link-light);
+}
+.bg-silia-link-dark {
+  background-color: var(--silia-link-dark);
+}
+.bg-silia-highlight-light {
+  background-color: var(--silia-highlight-light);
+}
+.bg-silia-highlight-dark {
+  background-color: var(--silia-highlight-dark);
+}
+
+.text-silia-primary-light {
+  color: var(--silia-primary-light);
+}
+.text-silia-primary-dark {
+  color: var(--silia-primary-dark);
+}
+.text-silia-secondary-light {
+  color: var(--silia-secondary-light);
+}
+.text-silia-secondary-dark {
+  color: var(--silia-secondary-dark);
+}
+.text-silia-success-light {
+  color: var(--silia-accent-success-light);
+}
+.text-silia-success-dark {
+  color: var(--silia-accent-success-dark);
+}
+.text-silia-alert-light {
+  color: var(--silia-accent-alert-light);
+}
+.text-silia-alert-dark {
+  color: var(--silia-accent-alert-dark);
+}
+.text-silia-link-light {
+  color: var(--silia-link-light);
+}
+.text-silia-link-dark {
+  color: var(--silia-link-dark);
+}
+.text-silia-highlight-light {
+  color: var(--silia-highlight-light);
+}
+.text-silia-highlight-dark {
+  color: var(--silia-highlight-dark);
+}
+
+/* Classes avec effets de survol */
+.hover-bg-silia-primary:hover {
+  background-color: var(--silia-primary);
+}
+.hover-bg-silia-secondary:hover {
+  background-color: var(--silia-secondary);
+}
+.hover-bg-silia-success:hover {
+  background-color: var(--silia-accent-success);
+}
+.hover-bg-silia-alert:hover {
+  background-color: var(--silia-accent-alert);
+}
+.hover-text-silia-primary:hover {
+  color: var(--silia-primary);
+}
+.hover-text-silia-link:hover {
+  color: var(--silia-link);
+}
+.hover-border-silia-primary:hover {
+  border-color: var(--silia-primary);
+}
+
+/* Classes hover pour les nuances */
+.hover-bg-silia-primary-light:hover {
+  background-color: var(--silia-primary-light);
+}
+.hover-bg-silia-primary-dark:hover {
+  background-color: var(--silia-primary-dark);
+}
+.hover-bg-silia-secondary-light:hover {
+  background-color: var(--silia-secondary-light);
+}
+.hover-bg-silia-secondary-dark:hover {
+  background-color: var(--silia-secondary-dark);
+}
+.hover-bg-silia-success-light:hover {
+  background-color: var(--silia-accent-success-light);
+}
+.hover-bg-silia-success-dark:hover {
+  background-color: var(--silia-accent-success-dark);
+}
+.hover-bg-silia-alert-light:hover {
+  background-color: var(--silia-accent-alert-light);
+}
+.hover-bg-silia-alert-dark:hover {
+  background-color: var(--silia-accent-alert-dark);
+}
+.hover-bg-silia-link-light:hover {
+  background-color: var(--silia-link-light);
+}
+.hover-bg-silia-link-dark:hover {
+  background-color: var(--silia-link-dark);
+}
+.hover-bg-silia-highlight-light:hover {
+  background-color: var(--silia-highlight-light);
+}
+.hover-bg-silia-highlight-dark:hover {
+  background-color: var(--silia-highlight-dark);
+}
+
+.hover-text-silia-primary-light:hover {
+  color: var(--silia-primary-light);
+}
+.hover-text-silia-primary-dark:hover {
+  color: var(--silia-primary-dark);
+}
+.hover-text-silia-secondary-light:hover {
+  color: var(--silia-secondary-light);
+}
+.hover-text-silia-secondary-dark:hover {
+  color: var(--silia-secondary-dark);
+}
+.hover-text-silia-success-light:hover {
+  color: var(--silia-accent-success-light);
+}
+.hover-text-silia-success-dark:hover {
+  color: var(--silia-accent-success-dark);
+}
+.hover-text-silia-alert-light:hover {
+  color: var(--silia-accent-alert-light);
+}
+.hover-text-silia-alert-dark:hover {
+  color: var(--silia-accent-alert-dark);
+}
+.hover-text-silia-link-light:hover {
+  color: var(--silia-link-light);
+}
+.hover-text-silia-link-dark:hover {
+  color: var(--silia-link-dark);
+}
+.hover-text-silia-highlight-light:hover {
+  color: var(--silia-highlight-light);
+}
+.hover-text-silia-highlight-dark:hover {
+  color: var(--silia-highlight-dark);
+}
+
+/* Styles spécifiques pour les sections à fond bleu */
+.section-blue,
+.bg-silia-primary,
+[class*="bg-indigo"] section {
+  position: relative;
+  background-color: var(--silia-primary);
+  color: white;
+}
+
+/* Améliorations pour les boutons dans les sections à fond bleu */
+.section-blue .btn-primary,
+.bg-silia-primary .btn-primary,
+[class*="bg-indigo"] section .btn-primary {
+  background-color: var(--silia-accent-success);
+  color: white;
+}
+
+.section-blue .btn-primary:hover,
+.bg-silia-primary .btn-primary:hover,
+[class*="bg-indigo"] section .btn-primary:hover {
+  background-color: var(--silia-accent-success-dark);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.section-blue .btn-secondary,
+.bg-silia-primary .btn-secondary,
+[class*="bg-indigo"] section .btn-secondary {
+  background-color: white;
+  color: var(--silia-primary);
+  border-color: white;
+}
+
+.section-blue .btn-secondary:hover,
+.bg-silia-primary .btn-secondary:hover,
+[class*="bg-indigo"] section .btn-secondary:hover {
+  background-color: var(--silia-background-alt);
+  color: var(--silia-primary-dark);
+}
+
+/* Exception : Préserver les boutons avec bg-white explicite */
+.section-blue .bg-white,
+.bg-silia-primary .bg-white,
+[class*="bg-indigo"] .bg-white {
+  background-color: white !important;
+  color: var(--silia-primary) !important;
+}
+
+.section-blue .bg-white:hover,
+.bg-silia-primary .bg-white:hover,
+[class*="bg-indigo"] .bg-white:hover {
+  background-color: var(--silia-background-alt) !important;
+  color: var(--silia-primary-dark) !important;
+}
+
+.phone {
+  right: -140px;
+  top: 40px;
+}
