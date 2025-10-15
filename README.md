@@ -48,6 +48,7 @@ silia-landing-page/
 ### Sur Vercel (Recommandé)
 
 1. **Import automatique :**
+
    - Connectez-vous sur [Vercel](https://vercel.com)
    - Importez ce repository GitHub
    - Déployez automatiquement
@@ -73,11 +74,13 @@ npx serve
 ## 🎨 Design System
 
 ### Couleurs principales
+
 - **Violet principal** : `#6c63ff`
 - **Orange accent** : `#fbbf24`
 - **Beige chaud** : `#fdf8f3`
 
 ### Gradients
+
 - Stats : `indigo → purple → pink → rose`
 - Section sombre : `gray-900 → indigo-900 → purple-900`
 
