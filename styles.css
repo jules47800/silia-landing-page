@@ -2062,6 +2062,18 @@ section[id] {
     padding-bottom: 2.5rem;
   }
 
+  /* Logo carousel - full width et plus grand */
+  .logo-scroll {
+    width: 100vw !important;
+    margin-left: calc(-50vw + 50%) !important;
+    margin-right: calc(-50vw + 50%) !important;
+    overflow: hidden !important;
+  }
+  
+  .logo-scroll img {
+    max-height: 50px !important;
+  }
+  
   /* Client logos for small mobile */
   .logo-scroll .w-40 {
     width: 6rem;
@@ -2744,9 +2756,27 @@ header[class*="bg-indigo"] button[aria-label="Toggle menu"]:hover {
 
 /* Mobile First - Base styles pour petits écrans */
 @media (max-width: 640px) {
+  /* Header mobile compact */
+  header {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+  
+  header .py-2, header .py-3, header .py-4 {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+  
+  /* Hero Section Mobile - réduit la hauteur */
+  .section-hero {
+    padding-top: 5rem !important;
+    padding-bottom: 2.5rem !important;
+    min-height: auto !important;
+  }
+  
   /* Typographie mobile optimisée */
   h1 {
-    font-size: 2rem !important;
+    font-size: 1.75rem !important;
     line-height: 1.2 !important;
   }
 

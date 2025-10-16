@@ -14,7 +14,7 @@
     <!-- Accessibility Font Size Controls -->
     <div
       id="accessibilityControls"
-      class="fixed right-4 top-24 z-40 bg-white rounded-lg shadow-lg p-3 border-2 border-gray-200"
+      class="fixed right-4 top-24 z-[100] bg-white rounded-lg shadow-lg p-3 border-2 border-gray-200 hidden lg:block"
       onclick="toggleAccessibilityMenu()"
       title="Taille du texte"
     >
@@ -89,11 +89,11 @@
     <header
       class="fixed top-0 left-0 right-0 z-50 bg-indigo-600 backdrop-blur-sm shadow-sm"
     >
-      <div class="mx-auto max-w-screen-xl px-4 sm:px-8 py-4">
+      <div class="mx-auto max-w-screen-xl px-4 sm:px-8 py-2 sm:py-3 lg:py-4">
         <div class="flex items-center justify-between">
           <a href="/" class="flex items-center">
             <img
-              class="h-12 sm:h-16 w-auto"
+              class="h-10 sm:h-12 lg:h-16 w-auto"
               src="images/logo.png"
               alt="Silia"
             />
@@ -270,7 +270,7 @@
     <!-- Hero Section -->
     <section
       id="hero"
-      class="section-block section-hero relative pt-32 pb-20 overflow-hidden"
+      class="section-block section-hero relative pt-20 sm:pt-24 lg:pt-32 pb-12 sm:pb-16 lg:pb-20 overflow-hidden"
     >
       <!-- Background Pattern -->
       <div class="absolute inset-0 -z-10">
@@ -546,18 +546,18 @@
     <!-- Clients Logo Carousel -->
     <section
       id="clients"
-      class="section-block section-soft py-16 bg-gradient-to-b from-white to-gray-50"
+      class="section-block section-soft py-12 sm:py-16 bg-gradient-to-b from-white to-gray-50 overflow-hidden"
     >
-      <div class="mx-auto max-w-screen-xl px-8">
-        <h2 class="text-center text-3xl font-bold text-gray-800 mb-12">
+      <div class="mx-auto max-w-full">
+        <h2 class="text-center text-2xl sm:text-3xl font-bold text-gray-800 mb-8 sm:mb-12 px-4">
           Ils nous font confiance
         </h2>
-        <div class="logo-scroll">
+        <div class="logo-scroll w-full">
           <div class="logo-scroll-inner">
             <!-- First set of logos -->
-            <div class="inline-flex items-center gap-12 px-6">
+            <div class="inline-flex items-center gap-8 sm:gap-12 px-4 sm:px-6">
               <div
-                class="w-40 h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-4"
+                class="w-32 h-24 sm:w-40 sm:h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-3 sm:p-4 flex-shrink-0"
                 title="Union Pour l'Entreprise des Hautes-Alpes | Déploiement application mobile SILIA | 2024"
               >
                 <img
@@ -567,7 +567,7 @@
                 />
               </div>
               <div
-                class="w-40 h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-4"
+                class="w-32 h-24 sm:w-40 sm:h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-3 sm:p-4 flex-shrink-0"
                 title="CFA Interpro 28 | Déploiement application mobile SILIA | 2022"
               >
                 <img
@@ -577,7 +577,7 @@
                 />
               </div>
               <div
-                class="w-40 h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-4"
+                class="w-32 h-24 sm:w-40 sm:h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-3 sm:p-4 flex-shrink-0"
                 title="Centre Social La Passerelle Quetigny | Déploiement application mobile SILIA | 2023"
               >
                 <img
@@ -587,7 +587,7 @@
                 />
               </div>
               <div
-                class="w-40 h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-4"
+                class="w-32 h-24 sm:w-40 sm:h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-3 sm:p-4 flex-shrink-0"
                 title="Mission Locale du Pays d'Aix | Déploiement application mobile SILIA | 2023"
               >
                 <img
@@ -597,7 +597,7 @@
                 />
               </div>
               <div
-                class="w-40 h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-4"
+                class="w-32 h-24 sm:w-40 sm:h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-3 sm:p-4 flex-shrink-0"
                 title="Tech XV | Déploiement application mobile SILIA | 2022"
               >
                 <img
@@ -608,9 +608,9 @@
               </div>
             </div>
             <!-- Duplicate set for seamless loop -->
-            <div class="inline-flex items-center gap-12 px-6">
+            <div class="inline-flex items-center gap-8 sm:gap-12 px-4 sm:px-6">
               <div
-                class="w-40 h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-4"
+                class="w-32 h-24 sm:w-40 sm:h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-3 sm:p-4 flex-shrink-0"
                 title="Union Pour l'Entreprise des Hautes-Alpes | Déploiement application mobile SILIA | 2024"
               >
                 <img
@@ -620,7 +620,7 @@
                 />
               </div>
               <div
-                class="w-40 h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-4"
+                class="w-32 h-24 sm:w-40 sm:h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-3 sm:p-4 flex-shrink-0"
                 title="CFA Interpro 28 | Déploiement application mobile SILIA | 2022"
               >
                 <img
@@ -630,7 +630,7 @@
                 />
               </div>
               <div
-                class="w-40 h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-4"
+                class="w-32 h-24 sm:w-40 sm:h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-3 sm:p-4 flex-shrink-0"
                 title="Centre Social La Passerelle Quetigny | Déploiement application mobile SILIA | 2023"
               >
                 <img
@@ -640,7 +640,7 @@
                 />
               </div>
               <div
-                class="w-40 h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-4"
+                class="w-32 h-24 sm:w-40 sm:h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-3 sm:p-4 flex-shrink-0"
                 title="Mission Locale du Pays d'Aix | Déploiement application mobile SILIA | 2023"
               >
                 <img
@@ -650,7 +650,7 @@
                 />
               </div>
               <div
-                class="w-40 h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-4"
+                class="w-32 h-24 sm:w-40 sm:h-32 flex items-center justify-center bg-white rounded-lg shadow-sm p-3 sm:p-4 flex-shrink-0"
                 title="Tech XV | Déploiement application mobile SILIA | 2022"
               >
                 <img
@@ -1567,78 +1567,78 @@
     </section>
 
     <!-- Blog Preview -->
-    <section class="section-block section-soft py-20 bg-gray-50">
-      <div class="mx-auto max-w-screen-xl px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+    <section class="section-block section-soft py-12 sm:py-16 lg:py-20 bg-gray-50">
+      <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10 sm:mb-12 lg:mb-16">
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-4">
             Nos derniers conseils pour une communication interne efficace
           </h2>
-          <p class="text-xl text-gray-600">Découvrez nos articles et guides pratiques</p>
+          <p class="text-base sm:text-lg lg:text-xl text-gray-600 px-4">Découvrez nos articles et guides pratiques</p>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-8">
+        <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
           <article
             class="bg-black rounded-lg border border-black overflow-hidden hover:shadow-2xl transition-shadow group"
           >
-            <div class="relative h-72 overflow-hidden">
+            <div class="relative h-48 sm:h-60 lg:h-72 overflow-hidden">
               <img
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 src="images/photo-reunion.jpg"
                 alt="CSE Communication"
               />
             </div>
-            <div class="p-8 text-white">
+            <div class="p-4 sm:p-6 lg:p-8 text-white">
               <a
                 href="/blog/23"
                 class="block hover:opacity-80 transition-opacity"
               >
-                <h3 class="text-2xl font-bold mb-4">
+                <h3 class="text-lg sm:text-xl lg:text-2xl font-bold mb-3 sm:mb-4">
                   Optimisez la Communication de votre CSE avec l'application
                   Silia !
                 </h3>
               </a>
-              <p class="mb-4 opacity-90">
+              <p class="mb-3 sm:mb-4 opacity-90 text-sm sm:text-base">
                 Les Comités Sociaux et Économiques (CSE) jouent un rôle
                 essentiel dans la vie des entreprises, veillant au bien-être et
                 aux intérêts des employés...
               </p>
-              <span class="text-sm opacity-70">07 Février 2024</span>
+              <span class="text-xs sm:text-sm opacity-70">07 Février 2024</span>
             </div>
           </article>
 
           <article
             class="bg-black rounded-lg border border-black overflow-hidden hover:shadow-2xl transition-shadow group"
           >
-            <div class="relative h-72 overflow-hidden">
+            <div class="relative h-48 sm:h-60 lg:h-72 overflow-hidden">
               <img
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 src="images/photo-brasserie.jpg"
                 alt="Restaurant Communication"
               />
             </div>
-            <div class="p-8 text-white">
+            <div class="p-4 sm:p-6 lg:p-8 text-white">
               <a
                 href="/blog/22"
                 class="block hover:opacity-80 transition-opacity"
               >
-                <h3 class="text-2xl font-bold mb-4">
+                <h3 class="text-lg sm:text-xl lg:text-2xl font-bold mb-3 sm:mb-4">
                   Révolutionnez le service clientèle de votre restaurant avec
                   l'application Silia !!
                 </h3>
               </a>
-              <p class="mb-4 opacity-90">
+              <p class="mb-3 sm:mb-4 opacity-90 text-sm sm:text-base">
                 Dans le monde numérique d'aujourd'hui, une communication
                 efficace est la clé du succès pour les restaurants...
               </p>
-              <span class="text-sm opacity-70">07 Février 2024</span>
+              <span class="text-xs sm:text-sm opacity-70">07 Février 2024</span>
             </div>
           </article>
         </div>
 
-        <div class="text-center mt-12">
+        <div class="text-center mt-8 sm:mt-10 lg:mt-12">
           <a
             href="blog.html"
-            class="inline-flex items-center px-8 py-4 bg-indigo-600 text-white text-lg font-semibold rounded-sm hover:bg-indigo-700 transition-all"
+            class="inline-flex items-center px-6 sm:px-8 py-3 sm:py-4 bg-indigo-600 text-white text-base sm:text-lg font-semibold rounded-sm hover:bg-indigo-700 transition-all"
           >
             Voir tous les articles
             <svg
