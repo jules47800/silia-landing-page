@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Association & ONG : Application communication bénévoles | Silia
+    </title>
+    <meta
+      name="description"
+      content="Mobilisez vos bénévoles et optimisez la communication de votre association avec Silia. Gestion événements, coordination équipes, engagement communautaire. Solution abordable et simple d'utilisation."
+    />
+    <meta
+      name="keywords"
+      content="application association, communication bénévoles, outil ONG, gestion association, mobilisation bénévoles, coordination association, communication association"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="bg-[#f4f4f4]">
+    <!-- Header Navigation -->
+    <header
+      class="fixed top-0 left-0 right-0 z-50 bg-indigo-600 backdrop-blur-sm shadow-sm"
+    >
+      <div class="mx-auto max-w-screen-xl px-4 sm:px-8 py-4">
+        <div class="flex items-center justify-between">
+          <a href="index.html" class="flex items-center">
+            <img
+              class="h-12 sm:h-16 w-auto"
+              src="images/logo.png"
+              alt="Silia"
+            />
+          </a>
+          <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold">
+            <a
+              href="index.html#fonctionnalites"
+              class="text-white hover:text-gray-200 transition-colors"
+              >Fonctionnalités</a
+            >
+            <a
+              href="blog.html"
+              class="text-white hover:text-gray-200 transition-colors"
+              >Blog</a
+            >
+            <a
+              href="contact.html"
+              class="text-white hover:text-gray-200 transition-colors"
+              >Contact</a
+            >
+          </nav>
+          <div class="hidden lg:flex items-center gap-4">
+            <a
+              href="dashboard-maquette.html"
+              class="cta-button px-6 py-3 bg-white text-indigo-600 rounded-sm font-semibold hover:bg-gray-100 transition-all shadow-md"
+            >
+              Démo gratuite
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Article Hero -->
+    <section
+      class="relative pt-32 pb-12 bg-gradient-to-br from-blue-500 via-blue-600 to-cyan-600"
+    >
+      <div class="container mx-auto px-4 sm:px-8 max-w-4xl">
+        <div class="text-center text-white">
+          <div
+            class="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full mb-6"
+          >
+            <span class="text-2xl">🤝</span>
+            <span class="text-sm font-medium">Association & ONG</span>
+          </div>
+          <h1 class="text-4xl sm:text-5xl font-bold mb-6">
+            Associations et ONG : Mobilisez vos bénévoles efficacement avec
+            Silia
+          </h1>
+          <div class="flex items-center justify-center gap-4 text-blue-100">
+            <time datetime="2024-02-12">12 Février 2024</time>
+            <span>•</span>
+            <span>7 min de lecture</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Article Content -->
+    <article class="py-16 bg-white">
+      <div class="container mx-auto px-4 sm:px-8 max-w-4xl">
+        <!-- Introduction -->
+        <div class="prose prose-lg max-w-none mb-12">
+          <p class="text-xl text-gray-700 leading-relaxed">
+            Les <strong>associations et ONG</strong> reposent sur l'engagement
+            de bénévoles passionnés, souvent dispersés géographiquement, avec
+            des disponibilités variables. Dans ce contexte unique, une
+            <strong>communication efficace et accessible</strong> n'est pas un
+            luxe : c'est une nécessité absolue pour fédérer votre communauté et
+            maximiser votre impact social.
+          </p>
+        </div>
+
+        <!-- Les défis spécifiques -->
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">
+            Les défis uniques de communication associative
+          </h2>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
+              <h3
+                class="text-xl font-semibold text-gray-900 mb-3 flex items-center gap-2"
+              >
+                <span class="text-2xl">🌍</span>
+                Bénévoles dispersés
+              </h3>
+              <p class="text-gray-700">
+                Vos volontaires sont répartis dans différentes villes, pays
+                parfois. Comment maintenir le lien et coordonner les actions à
+                distance ?
+              </p>
+            </div>
+
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
+              <h3
+                class="text-xl font-semibold text-gray-900 mb-3 flex items-center gap-2"
+              >
+                <span class="text-2xl">💰</span>
+                Budget limité
+              </h3>
+              <p class="text-gray-700">
+                Les ressources financières sont précieuses et doivent être
+                allouées à la mission principale, pas à des outils de
+                communication coûteux.
+              </p>
+            </div>
+
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
+              <h3
+                class="text-xl font-semibold text-gray-900 mb-3 flex items-center gap-2"
+              >
+                <span class="text-2xl">⏰</span>
+                Disponibilités variables
+              </h3>
+              <p class="text-gray-700">
+                Les bénévoles donnent leur temps libre, avec des horaires
+                hétérogènes. L'information doit être accessible 24/7 et facile à
+                consulter.
+              </p>
+            </div>
+
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
+              <h3
+                class="text-xl font-semibold text-gray-900 mb-3 flex items-center gap-2"
+              >
+                <span class="text-2xl">🔄</span>
+                Turnover et nouveaux arrivants
+              </h3>
+              <p class="text-gray-700">
+                L'intégration rapide des nouveaux bénévoles et la transmission
+                des connaissances sont cruciales pour maintenir la dynamique.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Solution Silia -->
+        <section
+          class="mb-12 bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl"
+        >
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">
+            Comment Silia transforme la communication associative
+          </h2>
+
+          <div class="space-y-6">
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-semibold text-blue-600 mb-3">
+                🎯 Mobilisation rapide pour vos actions
+              </h3>
+              <p class="text-gray-700 mb-3">
+                Besoin de bénévoles pour une collecte ce week-end ? Distribution
+                alimentaire d'urgence ? Envoyez une notification push à vos
+                volontaires disponibles et obtenez des confirmations de présence
+                instantanément.
+              </p>
+              <div
+                class="bg-blue-50 p-4 rounded-lg italic text-sm text-gray-600"
+              >
+                <strong>Exemple concret :</strong> "🚨 Action solidaire samedi
+                10h - Distribution alimentaire quartier Nord. Qui peut venir ?
+                👍" → 15 bénévoles confirmés en 20 minutes.
+              </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-semibold text-blue-600 mb-3">
+                📅 Gestion simplifiée des événements
+              </h3>
+              <p class="text-gray-700 mb-3">
+                Créez des événements (maraudes, collectes, ateliers, assemblées
+                générales), permettez aux bénévoles de s'inscrire directement
+                dans l'app, et envoyez des rappels automatiques. Plus besoin de
+                jongler avec des tableurs et des chaînes d'emails interminables.
+              </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-semibold text-blue-600 mb-3">
+                📚 Bibliothèque de ressources partagées
+              </h3>
+              <p class="text-gray-700 mb-3">
+                Guides d'action, procédures d'urgence, supports pédagogiques,
+                documents administratifs : centralisez toutes vos ressources
+                dans un espace accessible 24/7. Les nouveaux bénévoles trouvent
+                immédiatement ce dont ils ont besoin pour être opérationnels.
+              </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-semibold text-blue-600 mb-3">
+                💬 Groupes de discussion thématiques
+              </h3>
+              <p class="text-gray-700 mb-3">
+                Créez des canaux par mission (aide alimentaire, soutien
+                scolaire, plaidoyer), par région ou par projet. Les
+                conversations restent organisées et chaque bénévole accède aux
+                informations pertinentes selon son engagement.
+              </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-semibold text-blue-600 mb-3">
+                📣 Communication transparente avec vos membres
+              </h3>
+              <p class="text-gray-700 mb-3">
+                Partagez l'avancement des projets, célébrez les succès, publiez
+                les comptes-rendus d'AG. Maintenez vos adhérents et donateurs
+                informés pour renforcer leur engagement et leur confiance.
+              </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <h3 class="text-xl font-semibold text-blue-600 mb-3">
+                🎓 Formation et montée en compétences
+              </h3>
+              <p class="text-gray-700 mb-3">
+                Diffusez des formations, des tutoriels vidéo, des bonnes
+                pratiques. Permettez à vos bénévoles de se former à leur rythme
+                pour gagner en autonomie et en efficacité.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Cas d'usage -->
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">
+            Cas d'usage concrets pour les associations
+          </h2>
+
+          <div class="space-y-6">
+            <div class="border-l-4 border-blue-500 pl-6 py-2">
+              <h4 class="font-semibold text-lg text-gray-900 mb-2">
+                🍲 Association d'aide alimentaire
+              </h4>
+              <p class="text-gray-700">
+                Coordination des maraudes hebdomadaires, gestion des stocks de
+                denrées, planning des distributions, communication avec les
+                partenaires (supermarchés, cantines). Tout centralisé dans une
+                seule application accessible aux 50 bénévoles.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-blue-500 pl-6 py-2">
+              <h4 class="font-semibold text-lg text-gray-900 mb-2">
+                🌱 ONG environnementale
+              </h4>
+              <p class="text-gray-700">
+                Mobilisation pour des actions de terrain (nettoyage de plages,
+                plantation d'arbres), partage de supports pédagogiques pour les
+                animations scolaires, coordination des campagnes de
+                sensibilisation. Engagement renforcé grâce à la visibilité des
+                impacts collectifs.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-blue-500 pl-6 py-2">
+              <h4 class="font-semibold text-lg text-gray-900 mb-2">
+                📖 Association de soutien scolaire
+              </h4>
+              <p class="text-gray-700">
+                Matching tuteurs/élèves, partage de ressources pédagogiques,
+                suivi de la progression des jeunes accompagnés, coordination des
+                séances. Les bénévoles-tuteurs restent connectés et peuvent
+                échanger leurs méthodes qui fonctionnent.
+              </p>
+            </div>
+
+            <div class="border-l-4 border-blue-500 pl-6 py-2">
+              <h4 class="font-semibold text-lg text-gray-900 mb-2">
+                🏥 Association santé/humanitaire
+              </h4>
+              <p class="text-gray-700">
+                Gestion des missions terrain, briefings avant départs, partage
+                de protocoles médicaux, débriefings post-mission. Communication
+                sécurisée même dans des zones avec connexion internet limitée
+                (mode hors-ligne).
+              </p>
+            </div>
+
+            <div class="border-l-4 border-blue-500 pl-6 py-2">
+              <h4 class="font-semibold text-lg text-gray-900 mb-2">
+                🎭 Association culturelle
+              </h4>
+              <p class="text-gray-700">
+                Organisation d'événements (spectacles, expositions, ateliers),
+                recrutement de bénévoles pour les différents rôles,
+                communication avec les artistes et partenaires, promotion auprès
+                des membres.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Avantages -->
+        <section class="mb-12 bg-gray-50 p-8 rounded-2xl">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">
+            Pourquoi Silia est idéal pour les associations et ONG
+          </h2>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <div
+                  class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold"
+                >
+                  ✓
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">
+                  Tarifs solidaires
+                </h4>
+                <p class="text-gray-600 text-sm">
+                  Tarification spéciale pour les associations et ONG, adaptée
+                  aux budgets contraints du secteur non-lucratif.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <div
+                  class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold"
+                >
+                  ✓
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">
+                  Ultra-simple à utiliser
+                </h4>
+                <p class="text-gray-600 text-sm">
+                  Interface intuitive accessible à tous, quel que soit le niveau
+                  de compétences numériques. Pas besoin de formation complexe.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <div
+                  class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold"
+                >
+                  ✓
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">Mobile d'abord</h4>
+                <p class="text-gray-600 text-sm">
+                  Optimisé pour smartphone car c'est l'outil principal des
+                  bénévoles sur le terrain.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <div
+                  class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold"
+                >
+                  ✓
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">
+                  Déploiement rapide
+                </h4>
+                <p class="text-gray-600 text-sm">
+                  Mise en place en quelques jours. Pas de projet informatique
+                  complexe ni de compétences techniques requises.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <div
+                  class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold"
+                >
+                  ✓
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">
+                  Notifications intelligentes
+                </h4>
+                <p class="text-gray-600 text-sm">
+                  Alertes push pour ne rater aucune information urgente, avec
+                  respect de la vie privée des bénévoles.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <div
+                  class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold"
+                >
+                  ✓
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">
+                  Sécurité et confidentialité
+                </h4>
+                <p class="text-gray-600 text-sm">
+                  Données hébergées en France, conformité RGPD, protection des
+                  informations sensibles.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <div
+                  class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold"
+                >
+                  ✓
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">
+                  Engagement renforcé
+                </h4>
+                <p class="text-gray-600 text-sm">
+                  Visibilité de l'impact collectif, célébration des succès :
+                  motivez et fidélisez vos bénévoles.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <div
+                  class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold"
+                >
+                  ✓
+                </div>
+              </div>
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">
+                  Support solidaire
+                </h4>
+                <p class="text-gray-600 text-sm">
+                  Accompagnement dédié pour vous aider à maximiser l'impact de
+                  votre communication.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Impact mesurable -->
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold text-gray-900 mb-6">
+            L'impact mesurable de Silia pour les associations
+          </h2>
+
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-blue-50 p-6 rounded-xl text-center">
+              <div class="text-4xl font-bold text-blue-600 mb-2">+60%</div>
+              <p class="text-gray-700 font-medium">
+                Taux de participation aux événements
+              </p>
+            </div>
+            <div class="bg-blue-50 p-6 rounded-xl text-center">
+              <div class="text-4xl font-bold text-blue-600 mb-2">-70%</div>
+              <p class="text-gray-700 font-medium">
+                Temps administratif économisé
+              </p>
+            </div>
+            <div class="bg-blue-50 p-6 rounded-xl text-center">
+              <div class="text-4xl font-bold text-blue-600 mb-2">+45%</div>
+              <p class="text-gray-700 font-medium">
+                Fidélisation des bénévoles
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Témoignage fictif -->
+        <section class="mb-12">
+          <div
+            class="bg-gradient-to-br from-blue-500 to-cyan-600 text-white p-8 rounded-2xl"
+          >
+            <div class="flex items-start gap-4 mb-4">
+              <div
+                class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center text-3xl"
+              >
+                🤝
+              </div>
+              <div>
+                <p class="text-xl italic mb-4">
+                  "Avec 80 bénévoles actifs répartis dans toute la région,
+                  coordonner nos actions relevait du casse-tête. Depuis Silia,
+                  nous mobilisons en quelques minutes, partageons nos réussites
+                  en temps réel et nos nouveaux volontaires sont opérationnels
+                  dès leur première mission. C'est devenu notre outil
+                  indispensable !"
+                </p>
+                <p class="font-semibold">Marc Dubois</p>
+                <p class="text-blue-100 text-sm">
+                  Coordinateur - Association d'aide aux sans-abris
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section
+          class="text-center bg-gradient-to-r from-blue-50 to-cyan-50 p-8 rounded-2xl"
+        >
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Prêt à amplifier l'impact de votre association ?
+          </h2>
+          <p class="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+            Rejoignez les associations qui ont déjà démultiplié leur efficacité
+            avec Silia
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="https://calendly.com/siliasas/demo"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-8 py-4 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg"
+            >
+              Réserver une démo gratuite
+            </a>
+            <a
+              href="contact.html"
+              class="px-8 py-4 border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors"
+            >
+              Demander un devis solidaire
+            </a>
+          </div>
+        </section>
+
+        <!-- Navigation -->
+        <div class="mt-12 pt-8 border-t border-gray-200">
+          <a
+            href="blog.html"
+            class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              ></path>
+            </svg>
+            Retour au blog
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+      <div class="container mx-auto px-4 sm:px-8 max-w-screen-xl">
+        <div class="text-center">
+          <img
+            class="h-12 w-auto mx-auto mb-6"
+            src="images/logo.png"
+            alt="Silia"
+          />
+          <p class="text-gray-400 mb-8">
+            La solution de communication pour les associations engagées
+          </p>
+          <div class="flex justify-center gap-6 mb-8">
+            <a
+              href="index.html"
+              class="text-gray-400 hover:text-white transition-colors"
+              >Accueil</a
+            >
+            <a
+              href="index.html#fonctionnalites"
+              class="text-gray-400 hover:text-white transition-colors"
+              >Fonctionnalités</a
+            >
+            <a
+              href="blog.html"
+              class="text-gray-400 hover:text-white transition-colors"
+              >Blog</a
+            >
+            <a
+              href="contact.html"
+              class="text-gray-400 hover:text-white transition-colors"
+              >Contact</a
+            >
+          </div>
+          <p class="text-gray-500 text-sm">
+            © 2025 Silia. Tous droits réservés.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>

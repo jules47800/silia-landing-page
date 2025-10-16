@@ -291,39 +291,31 @@
       <!-- Main content area -->
       <div class="flex-1 flex flex-col min-w-0">
         <!-- Top bar -->
-        <header class="bg-white border-b border-silia-neutral-light shadow-sm">
-          <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-            <div class="flex items-center gap-4">
-              <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-silia-primary-light to-silia-primary-dark flex items-center justify-center shadow-md">
-                  <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <div>
-                  <h1 class="text-2xl font-bold text-gray-900">Dashboard</h1>
-                  <p class="text-sm text-silia-neutral-dark/60">Bienvenue dans votre espace</p>
-                </div>
-              </div>
-            </div>
+        <header class="bg-white/80 backdrop-blur-md border-b border-gray-200/60 sticky top-0 z-50">
+          <div class="max-w-7xl mx-auto px-6 py-3.5 flex items-center justify-between">
             <div class="flex items-center gap-3">
+              <img src="images/logo.png" alt="Silia" class="h-16 w-auto" style="filter: brightness(0) saturate(100%);" />
+              <div class="border-l border-gray-300 h-6 mx-2"></div>
+              <h1 class="text-base font-medium text-gray-700">Dashboard</h1>
+            </div>
+            <div class="flex items-center gap-2">
               <!-- Notifications -->
-              <button class="relative p-2.5 rounded-lg text-silia-neutral-dark/80 hover:bg-silia-neutral-light/50 hover:text-silia-primary transition-all duration-200">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <button class="relative p-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-silia-primary transition-all duration-200">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                 </svg>
-                <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-silia-alert rounded-full border-2 border-white"></span>
+                <span class="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-red-500 rounded-full border border-white"></span>
               </button>
               <!-- Aide -->
-              <button class="px-4 py-2.5 rounded-lg text-silia-neutral-dark bg-silia-neutral-light/50 hover:bg-silia-neutral-light font-medium transition-all duration-200 flex items-center gap-2">
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <button class="px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100 font-medium text-sm transition-all duration-200 flex items-center gap-1.5">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 Aide
               </button>
               <!-- Publier -->
-              <button class="px-5 py-2.5 rounded-lg bg-gradient-to-r from-silia-primary to-silia-primary-dark hover:from-silia-primary-dark hover:to-silia-primary-dark text-white font-semibold shadow-lg shadow-silia-primary/30 hover:shadow-silia-primary/50 transition-all duration-200 flex items-center gap-2">
-                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <button class="px-4 py-2 rounded-lg bg-silia-primary hover:bg-silia-primary-dark text-white font-medium text-sm shadow-sm hover:shadow-md transition-all duration-200 flex items-center gap-1.5">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
                 </svg>
                 Publier
