@@ -1303,15 +1303,15 @@ section[id] {
   flex: 1;
   padding: 1.5rem;
   background: #f9fafb;
+  overflow-x: auto;
 }
 
 .dashboard-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  width: 100%;
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
   border-bottom: 2px solid #e5e7eb;
+  /* flex properties are now handled by Tailwind classes in HTML */
 }
 
 .dashboard-table {
@@ -1663,22 +1663,71 @@ section[id] {
 /* Mobile responsive tour */
 @media (max-width: 640px) {
   .tour-content {
-    padding: 1.5rem;
-    max-width: 95%;
+    padding: 1rem;
+    max-width: 98%;
+    width: 98%;
+    max-height: 98vh;
+  }
+
+  .tour-content h3 {
+    font-size: 1.25rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .tour-content p {
+    font-size: 0.875rem !important;
   }
 
   .dashboard-preview {
     font-size: 0.75rem;
+    margin-top: 0.75rem;
   }
 
   .dashboard-sidebar {
-    width: 60px;
-    padding: 0.75rem 0.25rem;
+    width: 100%;
+    height: auto;
+    padding: 0.5rem;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 0.5rem;
   }
 
   .dashboard-nav-item {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+  }
+
+  .dashboard-content {
+    padding: 0.75rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .dashboard-header {
+    width: 100%;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    /* flex direction and alignment now handled by Tailwind in HTML */
+  }
+
+  .dashboard-header h2 {
+    font-size: 1rem;
+  }
+
+  .dashboard-table {
+    font-size: 0.75rem;
+  }
+
+  .dashboard-table-header {
+    display: none;
+  }
+
+  .dashboard-table-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.75rem;
   }
 }
 
@@ -2069,11 +2118,11 @@ section[id] {
     margin-right: calc(-50vw + 50%) !important;
     overflow: hidden !important;
   }
-  
+
   .logo-scroll img {
     max-height: 50px !important;
   }
-  
+
   /* Client logos for small mobile */
   .logo-scroll .w-40 {
     width: 6rem;
@@ -2761,23 +2810,50 @@ header[class*="bg-indigo"] button[aria-label="Toggle menu"]:hover {
     padding-top: 0.5rem !important;
     padding-bottom: 0.5rem !important;
   }
-  
-  header .py-2, header .py-3, header .py-4 {
+
+  header .py-2,
+  header .py-3,
+  header .py-4 {
     padding-top: 0.5rem !important;
     padding-bottom: 0.5rem !important;
   }
-  
+
   /* Hero Section Mobile - réduit la hauteur */
   .section-hero {
     padding-top: 5rem !important;
     padding-bottom: 2.5rem !important;
     min-height: auto !important;
   }
-  
+
   /* Typographie mobile optimisée */
   h1 {
     font-size: 1.75rem !important;
     line-height: 1.2 !important;
+  }
+
+  /* Centre la hero sur mobile et empile les éléments */
+  .section-hero .grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .section-hero .animate-slide-in {
+    width: 100% !important;
+  }
+
+  /* Forcer les CTA à être full-width sur mobile pour une meilleure ergonomie */
+  .section-hero .cta-button,
+  .section-hero .inline-flex.items-center {
+    width: 100% !important;
+    max-width: 640px !important;
+  }
+
+  /* Réduire le poids de la preview à droite et la cacher sur écrans plus petits */
+  .section-hero .phone,
+  .section-hero .relative.hidden.h-\[620px\] {
+    display: none !important;
   }
 
   h2 {
@@ -2823,13 +2899,49 @@ header[class*="bg-indigo"] button[aria-label="Toggle menu"]:hover {
 
   /* Menu mobile amélioré */
   #mobileMenu {
-    max-height: calc(100vh - 4rem);
+    position: fixed;
+    top: 64px; /* hauteur du header */
+    left: 0;
+    right: 0;
+    max-height: calc(100vh - 64px);
     overflow-y: auto;
+    z-index: 40;
+    background-color: rgba(79, 70, 229, 0.98) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  #mobileMenu nav {
+    padding: 0.75rem 1rem !important;
   }
 
   #mobileMenu a {
-    padding: 1rem !important;
+    padding: 0.875rem 1rem !important;
     font-size: 1rem !important;
+    min-height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    border-radius: 0.375rem;
+    margin-bottom: 0.25rem;
+  }
+
+  #mobileMenu a:active {
+    transform: scale(0.98);
+  }
+
+  /* Boutons CTA dans le menu mobile */
+  #mobileMenu a[href*="dashboard"],
+  #mobileMenu a[href*="calendly"] {
+    margin-top: 0.5rem;
+    padding: 0.875rem 1.5rem !important;
+    font-weight: 600;
+    text-align: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  #mobileMenu a svg {
+    flex-shrink: 0;
   }
 
   /* Sections - Espacements mobiles */
@@ -2942,6 +3054,148 @@ header[class*="bg-indigo"] button[aria-label="Toggle menu"]:hover {
   /* Flex direction mobile */
   .flex-col-mobile {
     flex-direction: column !important;
+  }
+
+  /* ============================================
+     TOUR GUIDE - RESPONSIVE MOBILE (CONSOLIDATED)
+     ============================================ */
+
+  /* Modal du tour - optimisé mobile */
+  .tour-overlay {
+    padding: 0.5rem;
+  }
+
+  .tour-content {
+    padding: 1rem;
+    width: 98%;
+    max-width: 100%;
+    max-height: 98vh;
+    margin: 0;
+  }
+
+  .tour-content h3 {
+    font-size: 1.25rem;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+
+  .tour-content p {
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+  /* Dashboard preview - optimisé pour mobile */
+  .dashboard-preview {
+    overflow-x: auto;
+    margin-top: 0.75rem;
+  }
+
+  /* Dots du tour */
+  .tour-dots {
+    gap: 0.375rem;
+    justify-content: center;
+  }
+
+  .tour-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  /* Boutons de navigation du tour */
+  #tourOverlay button {
+    font-size: 0.875rem;
+  }
+
+  /* ============================================
+     BLOG & ARTICLES - RESPONSIVE MOBILE
+     ============================================ */
+
+  /* Blog grid - 1 colonne sur mobile */
+  .blog-grid,
+  article.grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Articles cards optimisés */
+  article .p-8 {
+    padding: 1.25rem !important;
+  }
+
+  article h2,
+  article h3.text-2xl {
+    font-size: 1.25rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  /* Images d'articles responsive */
+  article .h-64 {
+    height: 12rem !important;
+  }
+
+  /* Prose content dans les articles */
+  .prose {
+    font-size: 0.95rem !important;
+  }
+
+  .prose h2 {
+    font-size: 1.5rem !important;
+    margin-top: 2rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .prose h3 {
+    font-size: 1.25rem !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .prose p {
+    margin-bottom: 1rem !important;
+    line-height: 1.6 !important;
+  }
+
+  .prose ul,
+  .prose ol {
+    padding-left: 1.25rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* Hero des articles */
+  article section.pt-24,
+  section.pt-32 {
+    padding-top: 5.5rem !important;
+  }
+
+  /* Badges et tags dans articles */
+  article .inline-flex.items-center.gap-2 {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  /* Call to action dans articles */
+  article .cta-button {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  /* Grilles de features dans articles */
+  article .grid.md\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  /* Cards de features */
+  article .bg-blue-50,
+  article .bg-indigo-50,
+  article .border-l-4 {
+    padding: 1rem !important;
+  }
+
+  article .bg-blue-50 h3,
+  article .bg-indigo-50 h3 {
+    font-size: 1.1rem !important;
   }
 }
 

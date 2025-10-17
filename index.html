@@ -37,13 +37,14 @@
     <!-- Tour Guide Overlay -->
     <div id="tourOverlay" class="tour-overlay">
       <div class="tour-content">
-        <div class="absolute top-3 right-3">
+        <div class="absolute top-2 right-2 sm:top-3 sm:right-3 z-10">
           <button
             onclick="closeTour()"
-            class="text-gray-500 hover:text-gray-700"
+            class="text-gray-500 hover:text-gray-700 p-2 rounded-full hover:bg-gray-100 transition-colors"
+            aria-label="Fermer le tour"
           >
             <svg
-              class="w-6 h-6"
+              class="w-5 h-5 sm:w-6 sm:h-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -57,24 +58,24 @@
             </svg>
           </button>
         </div>
-        <div id="tourStepContent">
+        <div id="tourStepContent" class="pr-8">
           <!-- Dynamic content will be inserted here -->
         </div>
-        <div class="flex justify-between mt-6">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 mt-4 sm:mt-6">
           <button
             onclick="previousTourStep()"
             id="prevBtn"
-            class="px-4 py-2 text-gray-600 hover:text-gray-800"
+            class="order-2 sm:order-1 px-4 py-2 text-sm sm:text-base text-gray-600 hover:text-gray-800 transition-colors w-full sm:w-auto"
           >
             ← Précédent
           </button>
-          <div class="flex gap-2" id="tourDots">
+          <div class="order-1 sm:order-2 flex gap-2" id="tourDots">
             <!-- Dots will be inserted here -->
           </div>
           <button
             onclick="nextTourStep()"
             id="nextBtn"
-            class="px-6 py-2 bg-indigo-600 text-white rounded-sm hover:bg-indigo-700"
+            class="order-3 px-6 py-2 text-sm sm:text-base bg-indigo-600 text-white rounded-sm hover:bg-indigo-700 transition-colors w-full sm:w-auto"
           >
             Suivant →
           </button>
@@ -205,51 +206,51 @@
       <!-- Mobile Menu -->
       <div
         id="mobileMenu"
-        class="hidden lg:hidden bg-indigo-700 border-t border-indigo-500"
+        class="hidden lg:hidden"
       >
-        <nav class="mx-auto max-w-screen-xl px-4 py-4 flex flex-col gap-3">
+        <nav class="flex flex-col">
           <a
             href="#fonctionnalites"
             onclick="toggleMobileMenu()"
-            class="text-white hover:text-gray-200 transition-colors py-2 border-b border-indigo-500"
+            class="text-white hover:bg-white/10 active:bg-white/20 transition-all"
             >Fonctionnalités</a
           >
           <a
             href="#avis"
             onclick="toggleMobileMenu()"
-            class="text-white hover:text-gray-200 transition-colors py-2 border-b border-indigo-500"
+            class="text-white hover:bg-white/10 active:bg-white/20 transition-all"
             >Avis</a
           >
           <a
             href="#faq"
             onclick="toggleMobileMenu()"
-            class="text-white hover:text-gray-200 transition-colors py-2 border-b border-indigo-500"
+            class="text-white hover:bg-white/10 active:bg-white/20 transition-all"
             >FAQ</a
           >
           <a
             href="#parrainage"
             onclick="toggleMobileMenu()"
-            class="text-white hover:text-gray-200 transition-colors py-2 border-b border-indigo-500"
+            class="text-white hover:bg-white/10 active:bg-white/20 transition-all"
             >Parrainage</a
           >
           <a
             href="blog.html"
             onclick="toggleMobileMenu()"
-            class="text-white hover:text-gray-200 transition-colors py-2 border-b border-indigo-500"
+            class="text-white hover:bg-white/10 active:bg-white/20 transition-all"
             >Blog</a
           >
           <a
             href="contact.html"
             onclick="toggleMobileMenu()"
-            class="text-white hover:text-gray-200 transition-colors py-2 border-b border-indigo-500"
+            class="text-white hover:bg-white/10 active:bg-white/20 transition-all"
             >Contact</a
           >
           <a
             href="dashboard-maquette.html"
             onclick="toggleMobileMenu()"
-            class="mt-4 w-full py-3 text-white border-2 border-white rounded-sm hover:bg-white hover:text-indigo-600 transition-colors font-semibold text-center flex items-center justify-center gap-2"
+            class="text-white border-2 border-white rounded-lg hover:bg-white hover:text-indigo-600 active:scale-95 transition-all font-semibold flex items-center justify-center gap-2"
           >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
             </svg>
             Connexion
@@ -259,7 +260,7 @@
             target="_blank"
             rel="noopener noreferrer"
             onclick="toggleMobileMenu()"
-            class="w-full py-3 bg-white text-indigo-600 rounded-sm font-semibold hover:bg-gray-100 transition-all text-center"
+            class="bg-white text-indigo-600 rounded-lg font-semibold hover:bg-gray-50 active:scale-95 transition-all text-center"
           >
             Créer mon compte
           </a>
